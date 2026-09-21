@@ -1,0 +1,390 @@
+/* ==========================================================================
+   Page sections: ribbon, about, services, projects, process, counters,
+   testimonials, CTA, contact, footer, back-to-top
+   ========================================================================== */
+
+/* ---------- marquee ribbon ---------- */
+.ribbon{background:var(--navy);padding:.9rem 0;overflow:hidden;border-block:1px solid rgba(255,255,255,.08)}
+.ribbon__track{display:flex;width:max-content;animation:marquee 30s linear infinite}
+.ribbon:hover .ribbon__track{animation-play-state:paused}
+.ribbon__group{display:flex;align-items:center;gap:2.6rem;padding-right:2.6rem}
+.ribbon span{font-family:var(--ff-display);font-weight:800;font-size:clamp(.95rem,1.4vw,1.15rem);letter-spacing:.2em;text-transform:uppercase;color:#fff;white-space:nowrap}
+.ribbon span:nth-of-type(even){color:rgba(255,255,255,.52)}
+.ribbon .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);flex:0 0 auto}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- about ---------- */
+.about__grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,5vw,80px);align-items:center}
+.about__media{position:relative;padding-bottom:18px}
+.about__frame{aspect-ratio:4/5;background:var(--navy)}
+.about__frame img{width:100%;height:100%;object-fit:cover}
+
+/* the smaller site photograph, overlapping the main frame */
+.about__inset{
+  position:absolute;left:-30px;bottom:-18px;width:47%;aspect-ratio:4/3;
+  border-radius:var(--radius);border:7px solid var(--offwhite);
+  box-shadow:var(--shadow-lg);background:var(--navy);
+}
+.about__inset img{width:100%;height:100%;object-fit:cover}
+
+.about__stat{
+  position:absolute;right:-24px;bottom:118px;background:var(--navy);color:#fff;
+  padding:1.4rem 1.6rem;border-radius:var(--radius);box-shadow:var(--shadow-lg);text-align:center;
+}
+.about__stat b{display:block;font-family:var(--ff-display);font-weight:800;font-size:2.4rem;line-height:1}
+.about__stat small{display:block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;margin-top:.35rem;opacity:.92}
+
+.about__pillars{display:grid;gap:1.1rem;margin-top:2rem}
+.pillar{display:flex;gap:1.1rem;align-items:flex-start;padding:1.1rem 1.2rem;background:#fff;border-radius:var(--radius);border:1px solid rgba(18,59,93,.07);transition:transform .5s var(--ease),box-shadow .5s var(--ease),opacity .9s var(--ease-out-expo)}
+.pillar:hover{transform:translateX(8px);box-shadow:var(--shadow)}
+.pillar i{flex:0 0 auto;width:42px;height:42px;display:grid;place-items:center;background:rgba(242,140,40,.12);color:var(--orange)}
+.pillar i svg{width:20px;height:20px}
+.pillar h4{font-family:var(--ff-display);font-size:1rem;color:var(--navy);margin:0 0 .2rem}
+.pillar p{margin:0;font-size:.92rem;color:var(--muted)}
+
+@media (max-width:900px){
+  .about__grid{grid-template-columns:1fr}
+  .about__stat{right:16px}
+  .about__inset{display:none}
+}
+
+/* ---------- services ---------- */
+.services{background:linear-gradient(180deg,var(--offwhite) 0%,#eef1f4 100%)}
+.svc__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(16px,2vw,26px)}
+
+.svc{
+  position:relative;display:flex;flex-direction:column;
+  padding:clamp(24px,2.6vw,32px);background:#fff;
+  border:1px solid rgba(18,59,93,.1);overflow:hidden;isolation:isolate;
+  transition:transform .6s var(--ease-out-expo),box-shadow .6s var(--ease),color .5s var(--ease),
+             border-color .5s var(--ease),opacity .9s var(--ease-out-expo);
+}
+
+/* the project photograph, revealed behind the navy panel on hover */
+.svc__photo{
+  position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;
+  opacity:0;transform:scale(1.1);
+  transition:opacity .7s var(--ease),transform 1.3s var(--ease-out-expo);
+}
+.svc::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(160deg,rgba(18,59,93,.8),rgba(8,29,47,.7));
+  transform:translateY(101%);
+  transition:transform .7s var(--ease-out-expo),background .5s var(--ease);
+}
+
+/* an accent rule that draws across the top edge as the card lifts */
+.svc__edge{
+  position:absolute;top:0;left:0;height:3px;width:100%;background:var(--orange);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .65s var(--ease-out-expo);
+}
+
+/* header: outlined index number, a hairline, then the icon */
+.svc__top{display:flex;align-items:center;gap:.9rem;margin-bottom:clamp(20px,2.4vw,30px)}
+.svc__num{
+  font-family:var(--ff-display);font-weight:800;font-size:2.5rem;line-height:.85;
+  letter-spacing:-.04em;color:transparent;
+  -webkit-text-stroke:1.5px rgba(18,59,93,.3);
+  transition:-webkit-text-stroke-color .5s var(--ease);
+}
+.svc__rule{flex:1;height:1px;background:rgba(18,59,93,.14);transition:background .5s var(--ease)}
+.svc__icon{
+  flex:0 0 auto;width:50px;height:50px;display:grid;place-items:center;
+  background:rgba(18,59,93,.07);color:var(--navy);
+  transition:background .5s var(--ease),color .5s var(--ease),transform .6s var(--ease-out-expo);
+}
+.svc__icon svg{width:24px;height:24px}
+
+.svc h3{margin-bottom:.6rem;transition:color .4s}
+.svc p{font-size:.94rem;margin:0 0 clamp(20px,2.4vw,28px)}
+
+/* footer sits on the card floor whatever the copy length */
+.svc__more{
+  display:flex;align-items:center;gap:.6rem;margin-top:auto;
+  padding-top:1rem;border-top:1px solid rgba(18,59,93,.12);
+  font-family:var(--ff-display);font-weight:700;font-size:.74rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--navy);
+  transition:color .4s var(--ease),border-color .5s var(--ease);
+}
+.svc__arrow{
+  margin-left:auto;width:34px;height:34px;display:grid;place-items:center;
+  border:1px solid rgba(18,59,93,.18);color:var(--navy);
+  transition:background .45s var(--ease),border-color .45s var(--ease),color .45s var(--ease),transform .45s var(--ease-out-expo);
+}
+
+/* ---- scrolled into view: the card turns photographic ----
+   `is-in` is set by the Reveal wrapper, so the photographs appear as the
+   section comes up the page rather than waiting for a hover that never
+   happens on a touch screen. The panel and photo lag the reveal slightly so
+   the card settles first. */
+.svc.is-in::before{transform:translateY(0);transition-delay:.25s}
+.svc.is-in .svc__photo{opacity:1;transform:scale(1);transition-delay:.25s}
+.svc.is-in{color:#c9d8e5;border-color:transparent}
+.svc.is-in h3{color:#fff}
+.svc.is-in .svc__num{-webkit-text-stroke-color:rgba(255,255,255,.45)}
+.svc.is-in .svc__rule{background:rgba(255,255,255,.22)}
+.svc.is-in .svc__icon{background:rgba(255,255,255,.14);color:#fff}
+.svc.is-in .svc__more{color:#fff;border-color:rgba(255,255,255,.22)}
+.svc.is-in .svc__arrow{border-color:rgba(255,255,255,.3);color:#fff}
+
+/* ---- hover: lift it, warm it up, let more of the photograph through ---- */
+.svc:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg)}
+.svc:hover::before{background:linear-gradient(160deg,rgba(18,59,93,.64),rgba(8,29,47,.52))}
+.svc:hover .svc__photo{transform:scale(1.04)}
+.svc:hover .svc__edge{transform:scaleX(1)}
+.svc:hover .svc__num{-webkit-text-stroke-color:rgba(242,140,40,.95)}
+.svc:hover .svc__icon{background:var(--orange);color:#fff;transform:rotate(-8deg) scale(1.06)}
+.svc:hover .svc__arrow{background:var(--orange);border-color:var(--orange);color:#fff;transform:translateX(4px)}
+
+/* a staggered baseline once all four sit on one row */
+@media (min-width:1100px){
+  .svc:nth-child(even){margin-top:34px}
+}
+
+/* ---------- projects ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2.4rem}
+.filter{
+  display:inline-flex;align-items:center;
+  padding:.62rem 1.3rem;border:1px solid rgba(18,59,93,.16);
+  font-family:var(--ff-display);font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--navy);transition:all .4s var(--ease);
+}
+.filter:hover{border-color:var(--navy)}
+.filter.is-active{background:var(--navy);border-color:var(--navy);color:#fff}
+/* the count rides inside the active chip rather than sitting under the row */
+.filter__count{
+  display:inline-grid;place-items:center;
+  min-width:1.5em;height:1.5em;padding:0 .4em;margin-left:.6rem;
+  border-radius:999px;background:rgba(255,255,255,.2);color:#fff;
+  font-size:.66rem;font-weight:800;line-height:1;letter-spacing:0;
+}
+
+/* Bento bed. Six columns with a short row unit; each card carries a
+   proj--w{cols} proj--r{rows} pair that ProjectGrid.jsx works out per card. */
+.proj__grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  grid-auto-rows:clamp(74px,7.2vw,112px);
+  gap:clamp(16px,2vw,24px);
+}
+.proj{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  grid-column:span 2;grid-row:span 3;
+  background:var(--navy);cursor:pointer;
+  transition:opacity .9s var(--ease-out-expo),transform .9s var(--ease-out-expo),box-shadow .5s var(--ease);
+}
+/* the listing page scans better as a plain run of squares than as a bento */
+.proj__grid--uniform{grid-template-columns:repeat(auto-fill,minmax(258px,1fr));grid-auto-rows:auto}
+.proj__grid--uniform .proj{grid-column:auto;grid-row:auto;aspect-ratio:1/1}
+
+.proj--w3{grid-column:span 3}
+.proj--w4{grid-column:span 4}
+.proj--w6{grid-column:span 6}
+.proj--r4{grid-row:span 4}
+/* a card given the full width earns a bigger headline than a square does */
+.proj--w4 h3,.proj--w6 h3{font-size:clamp(1.35rem,2vw,1.7rem)}
+.proj:hover{box-shadow:var(--shadow-lg)}
+/* the whole card is the link; everything else sits under it */
+.proj__link{position:absolute;inset:0;z-index:4}
+.proj__thumb{position:absolute;inset:0}
+.proj__thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease-out-expo)}
+.proj:hover .proj__thumb img{transform:scale(1.07)}
+.proj__veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,29,47,.94) 0%,rgba(8,29,47,.34) 46%,rgba(8,29,47,.06) 100%);transition:opacity .5s}
+
+.proj__body{position:absolute;inset:auto 0 0;padding:clamp(20px,2.4vw,28px);color:#fff;z-index:2}
+.proj__tag{display:inline-block;font-family:var(--ff-display);font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:.5rem}
+.proj h3{color:#fff;font-size:1.25rem;margin-bottom:.15rem}
+.proj__meta{font-size:.82rem;color:#b9cadb;max-height:0;opacity:0;overflow:hidden;margin:0;transition:max-height .55s var(--ease-out-expo),opacity .45s .08s}
+.proj:hover .proj__meta{max-height:120px;opacity:1}
+.proj__scope{display:block;margin-top:.4rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+/* the headline number for each project — floor count, span, units */
+.proj__metric{
+  position:absolute;top:20px;left:20px;z-index:2;
+  padding:.55rem .85rem;
+  background:rgba(8,29,47,.45);border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  color:#fff;text-align:left;
+  opacity:0;transform:translateY(-10px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease-out-expo);
+}
+.proj:hover .proj__metric{opacity:1;transform:none}
+.proj__metric b{display:block;font-family:var(--ff-display);font-weight:800;font-size:1.15rem;line-height:1}
+.proj__metric small{display:block;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.66);margin-top:.2rem}
+
+.proj__arrow{
+  position:absolute;top:20px;right:20px;width:44px;height:44px;
+  background:#fff;color:var(--navy);display:grid;place-items:center;z-index:2;
+  opacity:0;transform:scale(.4) rotate(-40deg);transition:all .5s var(--ease-out-expo);
+}
+.proj:hover .proj__arrow{opacity:1;transform:none}
+.proj__arrow svg{width:17px;height:17px}
+
+/* below the grid: the way through to the full list */
+.proj__more{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1rem;margin-top:clamp(28px,3.4vw,44px)}
+.proj__more-note{font-size:.82rem;color:var(--steel)}
+.proj__empty{text-align:center;color:var(--steel);padding:clamp(32px,5vw,64px) 0;margin:0}
+.proj__empty strong{color:var(--navy)}
+
+/* The bento only reads as a composition when there is room for it. Below the
+   bed collapses to plain equal cards, which stay legible at thumb width. */
+@media (max-width:900px){
+  .proj__grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+  .proj,.proj--w3,.proj--w4{grid-column:span 1;grid-row:auto;aspect-ratio:4/3.1}
+  .proj--w6{grid-column:span 2;grid-row:auto;aspect-ratio:16/9}
+  .proj__grid--uniform{grid-template-columns:repeat(2,1fr)}
+  .proj__grid--uniform .proj{aspect-ratio:1/1}
+}
+@media (max-width:560px){
+  .proj__grid{grid-template-columns:1fr}
+  .proj,.proj--w3,.proj--w4,.proj--w6{grid-column:span 1;aspect-ratio:4/3.4}
+  .proj__grid--uniform{grid-template-columns:1fr}
+  .proj__grid--uniform .proj{aspect-ratio:4/3.4}
+}
+
+/* ---------- process ---------- */
+.process{background:var(--navy);position:relative;overflow:hidden}
+/* the band is navy without `.section--navy`, so its headings need lifting
+   off the default navy type colour by hand */
+.process h2,.process h3{color:#fff}
+.process .lead{color:#a9bfd2}
+.process::before{
+  content:"";position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(to right,rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:90px 90px;
+}
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,34px);margin-top:clamp(30px,4vw,54px)}
+.steps::before{content:"";position:absolute;top:29px;left:6%;right:6%;height:2px;background:rgba(255,255,255,.14)}
+.steps__fill{position:absolute;top:29px;left:6%;height:2px;background:var(--orange);width:0;transition:width 1.6s var(--ease-out-expo);box-shadow:0 0 14px rgba(242,140,40,.8)}
+.step{position:relative;z-index:2;text-align:center}
+.step b{
+  width:58px;height:58px;background:var(--navy);border:2px solid rgba(255,255,255,.2);
+  display:grid;place-items:center;margin:0 auto 1.1rem;color:#fff;
+  font-family:var(--ff-display);font-weight:800;font-size:1.1rem;transition:all .6s var(--ease-out-expo);
+}
+.step.is-in b{background:var(--orange);border-color:var(--orange);box-shadow:0 0 0 8px rgba(242,140,40,.14)}
+.step h3{font-size:1.05rem;margin-bottom:.4rem}
+.step p{font-size:.88rem;color:#9fb6c9;margin:0}
+@media (max-width:820px){.steps{grid-template-columns:repeat(2,1fr);row-gap:34px}.steps::before,.steps__fill{display:none}}
+@media (max-width:460px){.steps{grid-template-columns:1fr}}
+
+/* ---------- counters band ---------- */
+.counts{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.counts .num{font-family:var(--ff-display);font-weight:800;font-size:clamp(2.2rem,4.4vw,3.4rem);color:var(--navy);line-height:1;letter-spacing:-.03em}
+.counts .num i{font-style:normal;color:var(--orange)}
+.counts .lbl{margin-top:.5rem;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--steel);font-weight:600}
+@media (max-width:700px){.counts{grid-template-columns:repeat(2,1fr);gap:34px 16px}}
+
+/* ---------- testimonials ---------- */
+.quotes{position:relative;max-width:900px;margin-inline:auto;text-align:center}
+.quote{display:none;margin:0}
+.quote.is-active{display:block;animation:qIn .8s var(--ease-out-expo)}
+@keyframes qIn{from{opacity:0;transform:translateY(22px)}}
+.quote p{font-family:var(--ff-display);font-weight:600;font-size:clamp(1.15rem,2.2vw,1.75rem);line-height:1.5;color:#fff;letter-spacing:-.01em}
+.quote cite{display:block;margin-top:1.4rem;font-style:normal}
+.quote cite b{display:block;color:var(--orange);font-family:var(--ff-display);font-size:.95rem}
+.quote cite small{color:#93aac0;font-size:.8rem;letter-spacing:.06em}
+.quotes__mark{font-family:var(--ff-display);font-size:6rem;line-height:.6;color:rgba(242,140,40,.28);margin-bottom:.4rem}
+.quotes__nav{display:flex;gap:.6rem;justify-content:center;margin-top:2rem}
+.quotes__nav button{width:38px;height:4px;background:rgba(255,255,255,.2);transition:background .4s,width .4s}
+.quotes__nav button.is-active{background:var(--orange);width:58px}
+
+/* ---------- CTA band ---------- */
+/* The photo carries the band now; the navy scrim over it is what keeps the
+   type readable, so the image can run far stronger than a tint would allow. */
+.cta{position:relative;overflow:hidden;background:var(--navy-900);color:#fff;text-align:center;isolation:isolate}
+.cta__bg{
+  position:absolute;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;
+  opacity:.5;
+}
+.cta__scrim{
+  position:absolute;inset:0;z-index:-2;
+  background:linear-gradient(180deg,rgba(8,29,47,.78) 0%,rgba(8,29,47,.9) 100%);
+}
+.cta::before{
+  content:"";position:absolute;inset:0;z-index:-1;opacity:.1;
+  background-image:linear-gradient(to right,#fff 1px,transparent 1px),linear-gradient(to bottom,#fff 1px,transparent 1px);
+  background-size:60px 60px;animation:gridDrift 18s linear infinite;
+}
+.cta h2{color:#fff;position:relative;margin-bottom:.8rem}
+.cta p{color:rgba(255,255,255,.92);max-width:54ch;margin-inline:auto;position:relative}
+.cta .btn{position:relative;margin-top:1.4rem}
+
+/* ---------- contact ---------- */
+.contact__grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(30px,4vw,64px);align-items:start}
+.info{display:grid;gap:1rem;margin-top:1.8rem}
+.info__row{display:flex;gap:1rem;align-items:flex-start;padding:1.15rem 1.25rem;background:#fff;border:1px solid rgba(18,59,93,.07);border-radius:var(--radius);transition:transform .5s var(--ease),box-shadow .5s,opacity .9s var(--ease-out-expo)}
+.info__row:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.info__row i{flex:0 0 auto;width:42px;height:42px;background:var(--navy);color:#fff;display:grid;place-items:center}
+.info__row i svg{width:19px;height:19px}
+.info__row b{display:block;font-family:var(--ff-display);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--steel)}
+.info__row span{color:var(--navy);font-weight:600}
+
+.form{background:#fff;border:1px solid rgba(18,59,93,.08);border-radius:var(--radius-lg);padding:clamp(24px,3vw,40px);box-shadow:var(--shadow-sm)}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field{position:relative;margin-bottom:1.1rem}
+.field input,.field select,.field textarea{
+  width:100%;padding:1.15rem 1rem .5rem;border:1px solid rgba(18,59,93,.16);border-radius:var(--radius);
+  background:#fff;font:inherit;font-size:.95rem;color:var(--navy);transition:border-color .3s,box-shadow .3s;
+}
+.field textarea{min-height:126px;resize:vertical;padding-top:1.4rem}
+.field label{
+  position:absolute;left:1rem;top:.95rem;font-size:.95rem;color:var(--steel);pointer-events:none;
+  transition:all .28s var(--ease);
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 4px rgba(242,140,40,.14)}
+.field input:focus + label,.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,.field textarea:not(:placeholder-shown) + label,
+.field select:focus + label,.field select.has-value + label{top:.34rem;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);font-weight:700}
+.field.has-error input,.field.has-error select,.field.has-error textarea{border-color:#d64545;box-shadow:0 0 0 4px rgba(214,69,69,.1)}
+.field .err{display:block;min-height:1rem;margin-top:.3rem;font-size:.74rem;color:#d64545;opacity:0;transition:opacity .3s}
+.field.has-error .err{opacity:1}
+.form__note{margin:1rem 0 0;font-size:.8rem;color:var(--steel)}
+.form__ok{margin-top:1rem;padding:.9rem 1.1rem;border-radius:var(--radius);background:rgba(242,140,40,.12);border:1px solid rgba(242,140,40,.35);color:var(--navy);font-size:.9rem;font-weight:600;display:none}
+.form__ok.is-on{display:block;animation:qIn .5s var(--ease-out-expo)}
+@media (max-width:900px){.contact__grid{grid-template-columns:1fr}}
+@media (max-width:520px){.form__row{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+.footer{background:var(--navy-900);color:#93aac0;padding-top:clamp(56px,6vw,88px)}
+/* align-items:start keeps each column measured from the top rule, so the
+   headings line up even though the columns run to different lengths */
+.footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:clamp(24px,3vw,48px);align-items:start}
+.footer__brand{display:flex;flex-direction:column;align-items:flex-start}
+/* the lockup is a 1774px asset with transparent bleed — it has to be capped */
+.footer__logo{display:block;margin-bottom:1.1rem;max-width:250px}
+.footer__logo img{display:block;width:100%;height:auto}
+.footer__brand p{font-size:.9rem;max-width:34ch;margin:0}
+.footer h4{font-family:var(--ff-display);color:#fff;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;margin:0 0 1.1rem}
+.footer li{margin-bottom:.6rem}
+.footer li:last-child{margin-bottom:0}
+.footer li a{font-size:.9rem;transition:color .3s,padding-left .3s;display:inline-block}
+.footer li a:hover{color:var(--orange);padding-left:6px}
+.socials{display:flex;gap:.6rem;margin-top:1.2rem}
+.socials a{width:40px;height:40px;border:1px solid rgba(255,255,255,.16);display:grid;place-items:center;transition:all .4s var(--ease)}
+.socials a svg{width:17px;height:17px}
+.socials a:hover{background:var(--orange);border-color:var(--orange);color:#fff;transform:translateY(-4px)}
+.footer__bar{margin-top:clamp(36px,4vw,60px);border-top:1px solid rgba(255,255,255,.1);padding:1.4rem 0;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;font-size:.82rem}
+.footer__bar .tag{color:var(--orange);font-family:var(--ff-display);font-weight:700;letter-spacing:.24em;font-size:.68rem;text-transform:uppercase}
+/* the brand column carries a logo and a paragraph, so it takes the full row
+   once the grid drops to two columns rather than being squeezed into one */
+@media (max-width:900px){
+  .footer__grid{grid-template-columns:1fr 1fr}
+  .footer__brand{grid-column:1 / -1}
+}
+@media (max-width:540px){
+  .footer__grid{grid-template-columns:1fr}
+  .footer__bar{justify-content:flex-start}
+}
+
+/* ---------- back to top ---------- */
+.totop{
+  position:fixed;right:22px;bottom:22px;z-index:900;width:50px;height:50px;
+  background:var(--navy);color:#fff;display:grid;place-items:center;box-shadow:var(--shadow);
+  opacity:0;transform:translateY(16px) scale(.85);pointer-events:none;
+  transition:all .5s var(--ease-out-expo);
+}
+.totop.is-on{opacity:1;transform:none;pointer-events:auto}
+.totop:hover{background:var(--orange);transform:translateY(-4px)}
+.totop svg{width:18px;height:18px}
