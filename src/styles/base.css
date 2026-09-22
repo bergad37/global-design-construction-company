@@ -64,8 +64,7 @@
 }
 .nav::before{
   /* Opaque, and white rather than off-white: translucency let the hero's own
-     content read through at mobile widths, and pure white means the supplied
-     logo's white plate disappears into the bar with no blend-mode trickery. */
+     content read through at mobile widths. */
   content:"";position:absolute;inset:0;background:#fff;
   opacity:0;transition:opacity .4s var(--ease);
 }
@@ -75,9 +74,11 @@
 .nav__inner{position:relative;width:min(100% - (var(--gutter) * 2),var(--container));margin-inline:auto;display:flex;align-items:center;gap:2rem}
 /* Two lockups stacked on each other and cross-faded. `logo-white.png` is
    transparent with a white wordmark, so it carries the bar while that sits
-   over the hero photography and the page banners; `logo.png` is the colour
-   version, and because its plate is white it vanishes into the white bar once
-   the nav turns opaque. */
+   over the hero photography and the page banners; `logo-no-background.png` is
+   the colour version, on transparency, for once the bar has turned white.
+   (`logo.png` is the same artwork but RGB with no alpha channel at all, so it
+   can only ever be a white box — it is kept for the touch icon, where iOS
+   fills transparency with black.) */
 /* Height comes from --logo-h in tokens.css and nothing else. The white lockup
    stays in flow so the link takes its natural width at that height — no
    aspect-ratio is hardcoded, so swapping in a differently proportioned file

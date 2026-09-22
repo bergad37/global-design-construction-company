@@ -34,8 +34,15 @@ export default function HeroSlider({ ready }) {
   // Autoplay. Reduced motion or a paused slider passes `null`, which stops it.
   useInterval(next, reduced || paused ? null : DWELL)
 
+  // Hovering pauses the slideshow so the badge can be read — but only for a
+  // pointer that can actually hover. A touch fires a compatibility mouseenter
+  // with no matching mouseleave, so wiring this to onMouseEnter left autoplay
+  // paused for good on phones from the first tap or scroll.
+  const onPointerEnter = (e) => { if (e.pointerType !== 'touch') setPaused(true) }
+  const onPointerLeave = (e) => { if (e.pointerType !== 'touch') setPaused(false) }
+
   // The slideshow runs itself. Arrow keys and the thumbnails are there for
-  // anyone who wants to steer it; hovering pauses so a badge can be read.
+  // anyone who wants to steer it.
   const onKeyDown = (e) => {
     if (e.key === 'ArrowRight') { e.preventDefault(); next() }
     if (e.key === 'ArrowLeft') { e.preventDefault(); prev() }
@@ -65,8 +72,8 @@ export default function HeroSlider({ ready }) {
       className="hero"
       id="top"
       aria-label="Featured projects"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
       onKeyDown={onKeyDown}
       onPointerDown={onPointerDown}
       onPointerUp={onPointerUp}

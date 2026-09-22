@@ -13,13 +13,19 @@ export default function Testimonials() {
     reduced || paused ? null : 6500,
   )
 
+  // Pause on hover only for a pointer that hovers. A touch fires a
+  // compatibility mouseenter with no matching mouseleave, which would park the
+  // rotation for good on phones.
+  const onPointerEnter = (e) => { if (e.pointerType !== 'touch') setPaused(true) }
+  const onPointerLeave = (e) => { if (e.pointerType !== 'touch') setPaused(false) }
+
   return (
     <section className="section section--navy">
       <div className="container">
         <div
           className="quotes"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
+          onPointerEnter={onPointerEnter}
+          onPointerLeave={onPointerLeave}
         >
           <div className="quotes__mark" aria-hidden="true">&ldquo;</div>
 

@@ -44,8 +44,12 @@
      Measured limits: the bar and the phone layout stay fine up to at least
      160px. The one thing that gives first is the hero's one-screen fit on a
      short laptop (1280x720), which holds to 96px and breaks at 108px. Taller
-     viewports are unaffected. */
-  --logo-h:clamp(46px, 5vw, 60px);
+     viewports are unaffected.
+     The supplied lockup carries a wide band of transparent bleed, so it reads
+     a good deal smaller than whatever height it is given — hence the generous
+     floor here. Trimming that bleed out of the PNG would let all of these
+     numbers come down again. */
+  --logo-h:clamp(60px, 5.6vw, 78px);
   --logo-h-stuck:calc(var(--logo-h) * .78);
 
   /* the bar is whatever is taller: its own minimum, or the logo plus breathing room */

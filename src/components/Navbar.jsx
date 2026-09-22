@@ -74,7 +74,7 @@ export default function Navbar() {
             page banners, the colour one over the opaque bar once you scroll. */}
         <Link className="nav__logo" to="/" aria-label={`${site.name} — home`}>
           <img className="nav__logo-light" src="/logo-white.png" alt={site.name} />
-          <img className="nav__logo-dark" src="/logo.png" alt="" aria-hidden="true" />
+          <img className="nav__logo-dark" src="/logo-no-background.png" alt="" aria-hidden="true" />
         </Link>
 
         <nav className="nav__menu" aria-label="Primary">
