@@ -40,13 +40,19 @@
 .hero__frame.is-active img{animation:heroZoom 9s var(--ease) forwards}
 @keyframes heroZoom{from{transform:scale(1.02)}to{transform:scale(1.13)}}
 
-/* legibility wash — heavier bottom-left, where the text sits */
+/* Legibility wash — heavier bottom-left, where the text sits.
+   The three layers composite, so the figures here are not what you see: the
+   headline used to sit under a combined 79% and the middle of the photograph
+   under 49%. These values put those at 59% and 31%, which roughly doubles the
+   photograph on show while leaving the white headline enough to hold against.
+   Lower them further and check the headline over the Kimironko slide, which
+   has the brightest sky of the four. */
 .hero__scrim{
   position:absolute;inset:0;pointer-events:none;
   background:
-    linear-gradient(to top, rgba(6,22,36,.92) 0%, rgba(6,22,36,.5) 30%, rgba(6,22,36,.12) 62%, rgba(6,22,36,.38) 100%),
-    linear-gradient(to right, rgba(8,29,47,.84) 0%, rgba(8,29,47,.34) 46%, rgba(8,29,47,0) 84%),
-    radial-gradient(70% 60% at 88% 12%, rgba(242,140,40,.16) 0%, rgba(242,140,40,0) 70%);
+    linear-gradient(to top, rgba(6,22,36,.78) 0%, rgba(6,22,36,.34) 30%, rgba(6,22,36,.06) 62%, rgba(6,22,36,.22) 100%),
+    linear-gradient(to right, rgba(8,29,47,.62) 0%, rgba(8,29,47,.2) 46%, rgba(8,29,47,0) 84%),
+    radial-gradient(70% 60% at 88% 12%, rgba(242,140,40,.1) 0%, rgba(242,140,40,0) 70%);
 }
 
 /* the blueprint grid the brand uses everywhere, laid faintly over the photo */
@@ -216,8 +222,8 @@
      so the project badge does. The middle of the photo is left alone. */
   .hero__scrim{
     background:
-      linear-gradient(to bottom,rgba(6,22,36,.6) 0%,rgba(6,22,36,0) 58%),
-      linear-gradient(to top,rgba(6,22,36,.72) 0%,rgba(6,22,36,0) 46%);
+      linear-gradient(to bottom,rgba(6,22,36,.42) 0%,rgba(6,22,36,0) 58%),
+      linear-gradient(to top,rgba(6,22,36,.56) 0%,rgba(6,22,36,0) 46%);
   }
   .hero__blueprint{display:none}
 

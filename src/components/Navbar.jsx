@@ -87,7 +87,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link className="btn btn--primary nav__cta" to="/#contact">
+          <Link className="btn btn--primary nav__cta" to="/contact">
             Start a project
             <Icon name="arrowUpRight" strokeWidth={2.4} />
           </Link>
@@ -107,7 +107,7 @@ export default function Navbar() {
         </button>
 
         <nav className="nav__drawer" id="drawer" aria-label="Mobile">
-          {[...navLinks, { to: "/#contact", label: "Contact" }].map(
+          {navLinks.map(
             (link, i) => (
               <Link
                 key={link.to}

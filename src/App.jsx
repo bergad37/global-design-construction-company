@@ -9,6 +9,7 @@ import RouteScroll from './components/RouteScroll.jsx'
 import Home from './pages/Home.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 import ProjectsPage from './pages/ProjectsPage.jsx'
+import ContactPage from './pages/ContactPage.jsx'
 import ProjectPage from './pages/ProjectPage.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/projects/:id" element={<ProjectPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

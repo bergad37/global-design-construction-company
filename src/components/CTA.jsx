@@ -13,7 +13,7 @@ export default function CTA() {
           Send us the brief. We will come back with a realistic scope, a programme and an honest number.
         </Reveal>
         <Reveal delay={0.2}>
-          <Link className="btn btn--light" to="/#contact">
+          <Link className="btn btn--light" to="/contact">
             Book a consultation
             <Icon name="arrowUpRight" strokeWidth={2.4} />
           </Link>

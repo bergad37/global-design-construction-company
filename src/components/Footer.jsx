@@ -6,7 +6,7 @@ const COMPANY = [
   { to: "/about", label: "About us" },
   { to: "/#process", label: "Our process" },
   { to: "/#projects", label: "Projects" },
-  { to: "/#contact", label: "Contact" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export default function Footer() {

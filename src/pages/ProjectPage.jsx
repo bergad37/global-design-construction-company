@@ -24,6 +24,19 @@ export default function ProjectPage() {
   // only the featured projects have a wide hero frame of their own
   const banner = project.hero ?? project.detail
 
+  // Any number of frames, however many the project actually has. Projects
+  // written before `gallery` existed fall back to the two they always had.
+  const gallery = project.gallery?.length
+    ? project.gallery
+    : [
+        { src: project.image, alt: project.alt },
+        { src: project.detail, alt: `${project.title} — detail view` },
+      ]
+
+  // An odd count opens on a full-width lead frame, which is what keeps the
+  // last row of a two-column grid from sitting half empty.
+  const lead = gallery.length % 2 === 1
+
   return (
     <>
       {/* ---------- banner ---------- */}
@@ -117,9 +130,10 @@ export default function ProjectPage() {
             <h2>How it came together.</h2>
           </Reveal>
 
-          <div className="gallery">
-            <MaskedImage src={project.image} alt={project.alt} />
-            <MaskedImage src={project.detail} alt={`${project.title} — detail view`} />
+          <div className={`gallery ${lead ? 'gallery--lead' : ''}`.trim()}>
+            {gallery.map((frame) => (
+              <MaskedImage key={frame.src} src={frame.src} alt={frame.alt} />
+            ))}
           </div>
         </div>
       </section>

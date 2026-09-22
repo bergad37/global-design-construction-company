@@ -19,16 +19,25 @@
 .about__frame{aspect-ratio:4/5;background:var(--navy)}
 .about__frame img{width:100%;height:100%;object-fit:cover}
 
-/* the smaller site photograph, overlapping the main frame */
+/* The finished building, overlapping the main frame: the drawings on the table
+   behind it, the handed-over job in front.
+
+   It hangs off the bottom RIGHT, not the left. The team photograph carries the
+   company's business card in its lower-left corner — measured, that card sits
+   across roughly 7–38% of the frame's width and 69–85% of its height, which is
+   exactly where this inset used to land. Anything moved into that corner will
+   cover it again. */
 .about__inset{
-  position:absolute;left:-30px;bottom:-18px;width:47%;aspect-ratio:4/3;
+  position:absolute;right:-30px;bottom:-18px;width:47%;aspect-ratio:4/3;
   border-radius:var(--radius);border:7px solid var(--offwhite);
   box-shadow:var(--shadow-lg);background:var(--navy);
 }
 .about__inset img{width:100%;height:100%;object-fit:cover}
 
+/* top-left, because the inset now owns the bottom-right corner and the card
+   owns the bottom-left */
 .about__stat{
-  position:absolute;right:-24px;bottom:118px;background:var(--navy);color:#fff;
+  position:absolute;left:-24px;top:26px;background:var(--navy);color:#fff;
   padding:1.4rem 1.6rem;border-radius:var(--radius);box-shadow:var(--shadow-lg);text-align:center;
 }
 .about__stat b{display:block;font-family:var(--ff-display);font-weight:800;font-size:2.4rem;line-height:1}
@@ -44,7 +53,7 @@
 
 @media (max-width:900px){
   .about__grid{grid-template-columns:1fr}
-  .about__stat{right:16px}
+  .about__stat{left:16px}
   .about__inset{display:none}
 }
 
@@ -345,6 +354,45 @@
 .form__ok.is-on{display:block;animation:qIn .5s var(--ease-out-expo)}
 @media (max-width:900px){.contact__grid{grid-template-columns:1fr}}
 @media (max-width:520px){.form__row{grid-template-columns:1fr}}
+
+/* ---------- office map ---------- */
+.map{margin-top:clamp(36px,4vw,60px);background:#fff;border:1px solid rgba(18,59,93,.09);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.map__frame{position:relative;aspect-ratio:21/9;background:var(--steel-200)}
+.map__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.map__bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.25rem;border-top:1px solid rgba(18,59,93,.08)}
+.map__where{display:flex;align-items:flex-start;gap:.8rem;min-width:0}
+.map__where svg{width:19px;height:19px;flex:0 0 auto;color:var(--orange);margin-top:.15rem}
+.map__where b{display:block;font-family:var(--ff-display);font-size:.95rem;color:var(--navy);line-height:1.2}
+.map__where small{display:block;font-size:.82rem;color:var(--muted)}
+.map__links{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem}
+.map__links a{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--ff-display);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);transition:color .3s var(--ease)}
+.map__links a svg{width:13px;height:13px;transition:transform .35s var(--ease)}
+.map__links a:hover{color:var(--orange)}
+.map__links a:hover svg{transform:translate(3px,-3px)}
+@media (max-width:640px){
+  .map__frame{aspect-ratio:4/3}
+  .map__bar{flex-direction:column;align-items:flex-start}
+}
+
+/* ---------- leadership and team ---------- */
+.team__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(20px,2.4vw,32px)}
+/* the leadership row is deliberately wider-celled, so three people do not
+   spread into the same rhythm as the eight below them */
+.team__grid--lead{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-bottom:clamp(28px,3.2vw,48px);padding-bottom:clamp(28px,3.2vw,48px);border-bottom:1px solid rgba(18,59,93,.1)}
+.person{text-align:left}
+.person__frame{
+  position:relative;aspect-ratio:4/5;margin-bottom:1rem;overflow:hidden;
+  border-radius:var(--radius);background:var(--navy);
+  display:grid;place-items:center;
+}
+.person__frame img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease-out-expo)}
+.person:hover .person__frame img{transform:scale(1.05)}
+/* the stand-in while a headshot is still missing */
+.person__initials{font-family:var(--ff-display);font-weight:800;font-size:clamp(1.8rem,3vw,2.6rem);color:rgba(255,255,255,.28);letter-spacing:.04em}
+.person h3{margin-bottom:.15rem}
+.person__role{display:block;font-family:var(--ff-display);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem}
+.person p{font-size:.86rem;color:var(--muted);margin:0}
+.team__grid--lead .person__frame{aspect-ratio:1/1}
 
 /* ---------- footer ---------- */
 .footer{background:var(--navy-900);color:#93aac0;padding-top:clamp(56px,6vw,88px)}

@@ -14,10 +14,24 @@ export const site = {
     'Architecture, engineering, construction and project management — one accountable team, from first sketch to final handover.',
   contact: {
     address: 'Kigali, Rwanda — add full street address',
-    phone: '+250 000 000 000',
-    phoneHref: 'tel:+250000000000',
-    email: 'info@example.com',
-    hours: 'Mon – Fri, 08:00 – 17:00',
+    phone: '+250 788 583 246',
+    phoneHref: 'tel:+250788583246',
+    email: 'kdjados0@gmail.com',
+    hours: 'Mon – Sat, 08:00 – 18:00',
+  },
+  /**
+   * Where the office pin drops on the contact map.
+   *
+   * TODO: replace with the office's real coordinates — these are Kigali city
+   * centre, not the actual address. Right-click the spot in any map and copy
+   * the latitude/longitude. `span` is how much ground the frame shows, in
+   * degrees: smaller is more zoomed in.
+   */
+  map: {
+    lat: -1.9441,
+    lng: 30.0619,
+    span: 0.012,
+    label: 'Kigali, Rwanda',
   },
   socials: [
     { id: 'facebook', label: 'Facebook', href: '#' },
@@ -35,6 +49,7 @@ export const navLinks = [
   { to: '/#services', label: 'Services', section: 'services' },
   { to: '/#projects', label: 'Projects', section: 'projects' },
   { to: '/#process', label: 'Process', section: 'process' },
+  { to: '/contact', label: 'Contact' },
 ]
 
 export const heroRotator = ['confidence.', 'landmarks.', 'communities.', 'legacy.']
@@ -111,6 +126,71 @@ export const processSteps = [
   { num: '02', title: 'Design', body: 'Concept through to construction drawings, approvals and tender documents.' },
   { num: '03', title: 'Build', body: 'Mobilisation, construction and quality control against a tracked programme.' },
   { num: '04', title: 'Grow', body: 'Handover, defects liability, maintenance guidance and future phasing.' },
+]
+
+/**
+ * Leadership and team, shown on the About page.
+ *
+ * SAMPLE CONTENT — replace every name, role and biography below with the real
+ * people. Drop headshots into `public/media/team/` and point `photo` at them;
+ * a portrait crop around 800x1000 matches the frame. Leave `photo` unset and
+ * the card falls back to the person's initials, so the section still reads
+ * properly before any photographs exist.
+ *
+ *   lead → true puts the person in the leadership row above the wider team
+ */
+export const team = [
+  {
+    id: 'managing-director',
+    name: 'Name Surname',
+    role: 'Managing Director',
+    lead: true,
+    bio: 'Sets the direction of the practice and stays close to the projects that carry the most risk.',
+  },
+  {
+    id: 'head-of-design',
+    name: 'Name Surname',
+    role: 'Head of Design',
+    lead: true,
+    bio: 'Leads the architecture and consultancy side, from first sketch through to approvals.',
+  },
+  {
+    id: 'construction-director',
+    name: 'Name Surname',
+    role: 'Construction Director',
+    lead: true,
+    bio: 'Owns delivery on site — programme, subcontractors, quality and handover.',
+  },
+  {
+    id: 'project-manager',
+    name: 'Name Surname',
+    role: 'Senior Project Manager',
+    bio: 'Runs the programme and the reporting clients see every week.',
+  },
+  {
+    id: 'structural-engineer',
+    name: 'Name Surname',
+    role: 'Structural Engineer',
+    bio: 'Frames, foundations and the numbers underneath them.',
+  },
+  {
+    id: 'services-engineer',
+    name: 'Name Surname',
+    role: 'Services Engineer',
+    bio: 'Electrical and mechanical design, installation and testing.',
+  },
+  {
+    id: 'quantity-surveyor',
+    name: 'Name Surname',
+    role: 'Quantity Surveyor',
+    bio: 'Costs the work up front and keeps it honest as the job moves.',
+  },
+  {
+    id: 'site-supervisor',
+    name: 'Name Surname',
+    role: 'Site Supervisor',
+    bio: 'On site daily, holding the standard the drawings set.',
+  },
 ]
 
 /* SAMPLE CONTENT: replace with approved client quotes. */

@@ -15,10 +15,21 @@
 .pagehead__scrim{
   position:absolute;inset:0;z-index:-1;
   background:
-    linear-gradient(to top, rgba(6,22,36,.94) 0%, rgba(6,22,36,.7) 40%, rgba(6,22,36,.5) 100%),
-    linear-gradient(to right, rgba(8,29,47,.8) 0%, rgba(8,29,47,.3) 60%, rgba(8,29,47,0) 100%);
+    linear-gradient(to top, rgba(6,22,36,.8) 0%, rgba(6,22,36,.52) 40%, rgba(6,22,36,.32) 100%),
+    linear-gradient(to right, rgba(8,29,47,.6) 0%, rgba(8,29,47,.2) 60%, rgba(8,29,47,0) 100%);
 }
 .pagehead__inner{max-width:48rem}
+
+/* The About banner carries the team photograph, which is a flat-lay shot from
+   above: squeezed into the usual shallow band it loses the hard hats top and
+   bottom and becomes a picture of a drawing. This holds the band to roughly
+   2.2:1, where the people still read, and sits the wording low over it. */
+.pagehead--about{
+  min-height:clamp(380px,45vw,640px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+/* the contact page runs straight into the form, so its banner sits lower */
+.pagehead--short{padding-block:calc(var(--nav-h) + clamp(40px,5vw,72px)) clamp(48px,5vw,80px)}
 .pagehead h1{color:#fff;margin-bottom:.9rem;text-shadow:0 2px 30px rgba(6,22,36,.45)}
 .pagehead p{
   color:rgba(255,255,255,.84);max-width:56ch;margin:0;
@@ -84,9 +95,14 @@
 }
 
 /* ---------- project: gallery ---------- */
+/* Two columns, however many frames a project has. Every source photograph is
+   16:9, so the frames are 16:9 too and nothing is cropped. An odd count gets a
+   full-width lead frame, which is what stops the final row sitting half empty
+   — 3, 5 and 7 tile as cleanly as 2, 4 and 6. */
 .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.8vw,22px)}
-.gallery__frame{aspect-ratio:4/3;background:var(--navy)}
+.gallery__frame{aspect-ratio:16/9;background:var(--navy)}
 .gallery__frame img{width:100%;height:100%;object-fit:cover}
+.gallery--lead .gallery__frame:first-child{grid-column:span 2}
 
 /* ---------- project: next project band ---------- */
 .nextproj{
@@ -100,7 +116,7 @@
 .nextproj:hover img{transform:scale(1.08)}
 .nextproj__scrim{
   position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(to right,rgba(6,22,36,.92) 0%,rgba(6,22,36,.64) 55%,rgba(6,22,36,.45) 100%);
+  background:linear-gradient(to right,rgba(6,22,36,.8) 0%,rgba(6,22,36,.48) 55%,rgba(6,22,36,.3) 100%);
 }
 .nextproj__inner span{
   display:block;font-family:var(--ff-display);font-size:.68rem;font-weight:700;
@@ -114,6 +130,25 @@
 }
 .nextproj__inner em svg{width:15px;height:15px;color:var(--orange)}
 .nextproj:hover .nextproj__inner em{gap:1rem;color:#fff}
+
+/* ---------- about: the team photograph behind the whole page ------------
+   Two fixed sheets: the photograph, then an off-white veil over it. The veil
+   is what keeps it a wash rather than a picture you read, and being nearly
+   opaque it also covers the contour texture on the body behind — which is why
+   the curves do not show on this page.
+
+   `isolation:isolate` is load-bearing. It gives .aboutpage its own stacking
+   context so the two negative-z-index sheets stay behind this page's content
+   but still paint above the body texture. Drop it and the veil goes behind
+   the texture instead of over it. */
+.aboutpage{position:relative;isolation:isolate}
+.aboutpage::before,
+.aboutpage::after{content:"";position:fixed;inset:0;pointer-events:none}
+.aboutpage::before{
+  z-index:-2;
+  background:url('/media/about/team.jpg') center center / cover no-repeat;
+}
+.aboutpage::after{z-index:-1;background:rgba(245,245,242,.91)}
 
 /* ---------- about: disciplines list ---------- */
 .disciplines{display:grid;gap:0;border-top:1px solid rgba(18,59,93,.12)}
@@ -154,7 +189,9 @@
 }
 @media (max-width:760px){
   .projmeta{grid-template-columns:repeat(2,1fr)}
+  /* one column, so the lead frame must stop spanning two or it overflows */
   .gallery{grid-template-columns:1fr}
+  .gallery--lead .gallery__frame:first-child{grid-column:span 1}
   .discipline{flex-wrap:wrap}
   .discipline__go{margin-left:0}
 }

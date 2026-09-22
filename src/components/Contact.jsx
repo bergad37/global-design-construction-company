@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Reveal from './Reveal.jsx'
 import Icon from './Icon.jsx'
+import LocationMap from './LocationMap.jsx'
 import { services, site } from '../data/site.js'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
@@ -149,6 +150,10 @@ export default function Contact() {
           </div>
         </Reveal>
 
+      </div>
+
+      <div className="container">
+        <LocationMap />
       </div>
     </section>
   )

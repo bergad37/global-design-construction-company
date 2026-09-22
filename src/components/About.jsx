@@ -32,15 +32,15 @@ export default function About() {
         <Reveal variant="left" className="about__media">
           <MaskedImage
             className="about__frame"
-            src="/media/about/design-studio.jpg"
-            alt="Architect drawing up a floor plan at a drafting table"
+            src="/media/about/team.jpg"
+            alt="The team around a floor plan, marking up the next stage of a job"
           />
           <MaskedImage
             className="about__inset"
-            src="/media/about/site-supervision.jpg"
-            alt="Site team setting out reinforcement before a concrete pour"
+            src="/media/about/completed-building.jpg"
+            alt="Kimironko Apartment finished and lit after handover"
           />
-          <FloatingStat />
+          {/* <FloatingStat /> */}
         </Reveal>
 
         <Reveal variant="right">

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
 import Counters from '../components/Counters.jsx'
+import Team from '../components/Team.jsx'
 import Process from '../components/Process.jsx'
 import Testimonials from '../components/Testimonials.jsx'
 import CTA from '../components/CTA.jsx'
@@ -19,10 +20,16 @@ function MaskedImage({ src, alt, className = '' }) {
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="aboutpage">
       {/* ---------- page banner ---------- */}
-      <header className="pagehead">
-        <img className="pagehead__bg" src="/media/about/practice.jpg" alt="" fetchPriority="high" decoding="async" />
+      <header className="pagehead pagehead--about">
+        <img
+          className="pagehead__bg"
+          src="/media/about/team.jpg"
+          alt="The team around a floor plan, marking up the next stage of a job"
+          fetchPriority="high"
+          decoding="async"
+        />
         <div className="pagehead__scrim" />
         <div className="container pagehead__inner">
           <span className="eyebrow">About us</span>
@@ -40,13 +47,13 @@ export default function AboutPage() {
           <Reveal variant="left" className="about__media">
             <MaskedImage
               className="about__frame"
-              src="/media/about/design-studio.jpg"
-              alt="Architect drawing up a floor plan at a drafting table"
+              src="/media/about/site-crew.jpg"
+              alt="Our site crew at work on the Rebero Villa structure"
             />
             <MaskedImage
               className="about__inset"
-              src="/media/about/site-supervision.jpg"
-              alt="Site team setting out reinforcement before a concrete pour"
+              src="/media/about/completed-building.jpg"
+              alt="Kimironko Apartment finished and lit after handover"
             />
           </Reveal>
 
@@ -123,9 +130,10 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <Team />
       <Process />
       <Testimonials />
       <CTA />
-    </>
+    </div>
   )
 }
