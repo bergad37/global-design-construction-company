@@ -93,6 +93,31 @@ export default function ProjectPage() {
             {project.body.map((para, i) => (
               <p key={i} className={i === 0 ? 'lead' : undefined}>{para}</p>
             ))}
+
+            {/* The render sits in this column rather than in a band of its own.
+                The spec card beside it is tall, so the column used to run out
+                of text and leave a long drop of empty page; this fills it, and
+                saves a section's worth of padding at the same time. */}
+            {project.design && (
+              <figure
+                className="design"
+                /* never grows past the file's own width */
+                style={{ '--design-w': `${project.design.width}px` }}
+              >
+                <img
+                  src={project.design.src}
+                  alt={project.design.alt}
+                  width={project.design.width}
+                  height={project.design.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  <b>The design</b> — the scheme as it was drawn. The photographs
+                  below are the same building on site.
+                </figcaption>
+              </figure>
+            )}
           </Reveal>
 
           <Reveal variant="right" className="project__spec">

@@ -113,13 +113,13 @@ export default function HeroSlider({ ready }) {
       <div className="hero__rail">
         <div className="container hero__rail-inner">
 
-          {/* the name badge for whichever project is on the stage */}
+          {/* The name badge for whichever project is on the stage. The name and
+              nothing else: category, location and the rest belong on the
+              project's own page, and a second line here only made the badge
+              tall enough to eat into the photograph behind it. */}
           <Link className="hero__badge" to={`/projects/${active.id}`} key={active.id}>
             <span className="hero__badge-bar" aria-hidden="true" />
-            <span className="hero__badge-text">
-              <b>{active.title}</b>
-              <small>{active.categoryLabel} · {active.location}</small>
-            </span>
+            <b className="hero__badge-name">{active.title}</b>
             <Icon name="arrowUpRight" strokeWidth={2.6} />
           </Link>
 

@@ -14,6 +14,12 @@
  *   hero       → 2400x1351 landscape frame (with an @sm 1280x720 twin)
  *   image      → the frame used by the grid cards and the hero thumbnails
  *   detail     → second frame; also the banner on non-featured project pages
+ *   design     → the architect's render, shown on the project page between the
+ *                write-up and the photographs. `width`/`height` are the file's
+ *                own pixel dimensions: the layout caps the frame at them so a
+ *                render is only ever shown at or below its native size. These
+ *                files are small, and upscaling them is what would make them
+ *                look poor. Optional — a project without one skips the band.
  *   gallery    → every other frame worth showing, in order, for the grid on
  *                the project page. Add or remove entries freely — the layout
  *                adapts to the count and does not care how many there are.
@@ -50,6 +56,12 @@ export const projects = [
     heroSmall: '/media/hero/ur-cst-mining-geology@sm.jpg',
     image: '/media/projects/ur-cst-mining-geology.jpg',
     detail: '/media/projects/ur-cst-mining-geology-detail.jpg',
+    design: {
+      src: '/media/projects/design/ur-cst-mining-geology.jpg',
+      width: 719,
+      height: 564,
+      alt: 'Architect’s render of the faculty building, its wings around a sunken court',
+    },
     alt: 'Concrete faculty building with a colonnaded facade under a clear sky',
     gallery: [
       { src: '/media/projects/gallery/ur-cst-1.jpg', alt: 'Colonnaded teaching block seen from the approach' },
@@ -90,6 +102,12 @@ export const projects = [
     heroSmall: '/media/hero/isai-busogo-smart-classroom@sm.jpg',
     image: '/media/projects/isai-busogo-smart-classroom.jpg',
     detail: '/media/projects/isai-busogo-smart-classroom-detail.jpg',
+    design: {
+      src: '/media/projects/design/isai-busogo-smart-classroom.jpg',
+      width: 677,
+      height: 259,
+      alt: 'Architect’s render of the teaching block and its brick colonnade',
+    },
     alt: 'Brick teaching building with a deep columned walkway and a white service wing',
     gallery: [
       { src: '/media/projects/gallery/isai-1.jpg', alt: 'The teaching block and its white service wing from the forecourt' },
@@ -161,6 +179,12 @@ export const projects = [
     heroSmall: '/media/hero/rebero-villa@sm.jpg',
     image: '/media/projects/rebero-villa.jpg',
     detail: '/media/projects/rebero-villa-detail.jpg',
+    design: {
+      src: '/media/projects/design/rebero-villa.jpg',
+      width: 620,
+      height: 330,
+      alt: 'Architect’s render of the villa, planted terraces stepping down the slope',
+    },
     alt: 'Villa under construction with stone-clad piers and a concrete frame on a hillside',
     gallery: [
       { src: '/media/projects/gallery/rebero-1.jpg', alt: 'Stone-clad piers and the cast concrete frame' },
@@ -197,6 +221,12 @@ export const projects = [
     // full-bleed hero. A larger original would let it join the slider.
     image: '/media/projects/muyange-apartment.jpg',
     detail: '/media/projects/muyange-apartment-detail.jpg',
+    design: {
+      src: '/media/projects/design/muyange-apartment.jpg',
+      width: 727,
+      height: 472,
+      alt: 'Architect’s render of the apartment blocks and their shaded terraces',
+    },
     alt: 'Cream apartment blocks with ribbed render panels behind a block boundary wall',
     gallery: [
       { src: '/media/projects/gallery/muyange-1.jpg', alt: 'Stacked terraces seen from the foot of the block' },

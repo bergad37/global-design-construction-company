@@ -94,6 +94,26 @@
   text-transform:uppercase;color:var(--orange);
 }
 
+/* ---------- project: the design it was built from ----------
+   Sits inside the write-up column. `--design-w` carries the file's own width
+   from the data and min() caps the frame at it, so a render is only ever shown
+   at or below native size — these files are small, and upscaling one is the
+   single thing that would make it look cheap. */
+.design{
+  margin:clamp(26px,3vw,38px) 0 0;
+  max-width:min(100%,var(--design-w));
+}
+.design img{
+  width:100%;height:auto;display:block;
+  border:1px solid rgba(18,59,93,.12);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);background:#fff;
+}
+.design figcaption{margin-top:.75rem;font-size:.84rem;color:var(--muted);line-height:1.55}
+.design figcaption b{
+  font-family:var(--ff-display);font-weight:700;color:var(--navy);
+  letter-spacing:.02em;
+}
+
 /* ---------- project: gallery ---------- */
 /* Two columns, however many frames a project has. Every source photograph is
    16:9, so the frames are 16:9 too and nothing is cropped. An odd count gets a
