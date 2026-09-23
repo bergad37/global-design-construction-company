@@ -4,7 +4,7 @@ import { services, site } from "../data/site.js";
 
 const COMPANY = [
   { to: "/about", label: "About us" },
-  { to: "/#process", label: "Our process" },
+  { to: "/story", label: "Our story" },
   { to: "/#projects", label: "Projects" },
   { to: "/contact", label: "Contact" },
 ];

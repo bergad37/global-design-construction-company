@@ -34,7 +34,11 @@
 export const FILTERS = [
   { id: 'all', label: 'All' },
   { id: 'residential', label: 'Residential' },
+  { id: 'commercial', label: 'Commercial' },
   { id: 'institutional', label: 'Education & Institutional' },
+  // Not a kind of building but a kind of job: schemes we designed and
+  // documented without also building them.
+  { id: 'design', label: 'Designs' },
 ]
 
 export const projects = [
@@ -71,6 +75,7 @@ export const projects = [
       { src: '/media/projects/gallery/ur-cst-5.jpg', alt: 'The long retaining wall carrying the ramp up to roof level' },
       { src: '/media/projects/gallery/ur-cst-6.jpg', alt: 'Planted roof meeting the timber-lined facade below' },
       { src: '/media/projects/gallery/ur-cst-7.jpg', alt: 'Boarded ramp running up onto the roof terrace' },
+      { src: '/media/projects/gallery/ur-cst-8.jpg', alt: 'Concrete pump reaching over the deck during a pour' },
     ],
     facts: [
       { label: 'Client', value: 'University of Rwanda' },
@@ -202,6 +207,90 @@ export const projects = [
       'A private villa on the Rebero ridge, currently on site. The frame is up, the stone cladding is going on and the deep roof overhangs are cast.',
       'The plot falls steeply, so the house is built off a terraced retaining structure that doubles as the lower floor’s rear wall — one structure doing two jobs, which took a whole line of foundations out of the job.',
       'Local stone is carried up the piers and the boundary walls so the built edge of the plot reads as one piece with the house rather than as a fence added afterwards.',
+    ],
+  },
+  {
+    id: 'lamar-retirement-house',
+    title: 'Lamar Retirement House',
+    category: 'design',
+    categoryLabel: 'Design',
+    location: 'Runda, Kamonyi \u2014 Rwanda',
+    year: '2024',
+    duration: 'Design stage',
+    client: 'Private client',
+    status: 'In design',
+    scope: 'Design only \u00b7 Architecture \u00b7 Documentation',
+    summary: 'Two pitched pavilions on a terraced garden plot, drawn for living on one level.',
+    metric: { value: '2', label: 'Pavilions' },
+    featured: true,
+    hero: '/media/hero/lamar-retirement-house.jpg',
+    heroSmall: '/media/hero/lamar-retirement-house@sm.jpg',
+    image: '/media/projects/lamar-retirement-house.jpg',
+    detail: '/media/projects/lamar-retirement-house-detail.jpg',
+    alt: 'Render of the house from above, its pool, court and terraced garden laid out below',
+    gallery: [
+      { src: '/media/projects/gallery/lamar-1.jpg', alt: 'The garden front, with exposed timber trusses over the gable glazing' },
+      { src: '/media/projects/gallery/lamar-2.jpg', alt: 'The solar array laid across the main pitched roof' },
+      { src: '/media/projects/gallery/lamar-3.jpg', alt: 'Plan view of the plot: house, pool, court and stepped garden path' },
+    ],
+    facts: [
+      { label: 'Location', value: 'Runda, Kamonyi District' },
+      { label: 'Drawing set', value: 'Design documents, April 2024' },
+      { label: 'Our role', value: 'Design only \u2014 architecture and the full drawing set' },
+      { label: 'Status', value: 'In design \u2014 not yet on site' },
+    ],
+    body: [
+      'A retirement house at Runda in Kamonyi. This one is design work: the architecture and the full drawing set are ours, and the building has not yet gone to site. It is drawn as two pitched pavilions with exposed timber trusses, linked by a lower flat-roofed middle section that holds the entrance.',
+      'Who it is for shaped the plan. The design documents carry an instruction that the work comply with prevailing accessibility requirements, and the house is laid out to be lived in on one level, with the garden reached by ramped and stepped routes rather than a single flight.',
+      'The plot is terraced rather than levelled. Pool, terrace and a hard court step down the slope below the house, and a solar array sits across the main roof pitch, which faces the right way for it.',
+    ],
+  },
+  {
+    id: 'nyamata-commercial-building',
+    title: 'Nyamata Commercial Building',
+    category: 'commercial',
+    categoryLabel: 'Commercial',
+    location: 'Nyamata, Bugesera \u2014 Rwanda',
+    year: 'In progress',
+    duration: 'Ongoing',
+    client: 'Private developer',
+    status: 'On site',
+    scope: 'Architecture \u00b7 Structure \u00b7 Construction',
+    summary: 'Shopfronts at street level with balconied floors above, cut into a hillside plot.',
+    metric: { value: '4', label: 'Levels' },
+    // Still on site, so the covers are the renders rather than a half-built
+    // shell: `image` is the angled view, `detail` the front elevation, and the
+    // card cross-fades between the two. Every construction frame is in the
+    // gallery below, in the order the job was built.
+    image: '/media/projects/nyamata-commercial-building.jpg',
+    detail: '/media/projects/nyamata-commercial-building-detail.jpg',
+    design: {
+      src: '/media/projects/design/nyamata-commercial-building.jpg',
+      width: 1600,
+      height: 900,
+      alt: 'Architect\u2019s render of the commercial block seen from the street corner',
+    },
+    alt: 'Architect’s render of the commercial block, lit at dusk',
+    gallery: [
+      { src: '/media/projects/gallery/nyamata-1.jpg', alt: 'Foundations being dug out across the sloping plot' },
+      { src: '/media/projects/gallery/nyamata-2.jpg', alt: 'Column starters cast and the pad foundations taking shape' },
+      { src: '/media/projects/gallery/nyamata-3.jpg', alt: 'Slab formwork and reinforcement seen from above' },
+      { src: '/media/projects/gallery/nyamata-4.jpg', alt: 'The deck cast, with the timber roof frame standing over it' },
+      { src: '/media/projects/gallery/nyamata-5.jpg', alt: 'Brickwork going up behind timber scaffolding' },
+      { src: '/media/projects/gallery/nyamata-6.jpg', alt: 'The frame and brick infill with the crew on site' },
+      { src: '/media/projects/gallery/nyamata-7.jpg', alt: 'Brickwork rising behind the scaffolding on the rear elevation' },
+      { src: '/media/projects/gallery/nyamata-8.jpg', alt: 'The steel roof frame going up over the finished brickwork' },
+    ],
+    facts: [
+      { label: 'Location', value: 'Nyamata, Bugesera District' },
+      { label: 'Use', value: 'Retail at street level, lettable floors above' },
+      { label: 'Contract', value: 'Architecture, structural design and construction' },
+      { label: 'Status', value: 'On site \u2014 frame and envelope' },
+    ],
+    body: [
+      'A commercial block in Nyamata: shopfronts opening straight onto the street at the lower level, with balconied lettable floors stacked above them.',
+      'The plot falls away sharply, so the building starts as a set of pad foundations stepped down the slope. Getting those levels right was most of the early work \u2014 the street frontage had to meet the road exactly while the rear of the building picked up the drop.',
+      'The frame is concrete, the infill is local brick, and the roof structure was framed in timber on site. It is a straightforward way to build here, and it keeps the trades and the materials within reach of the town the building serves.',
     ],
   },
   {

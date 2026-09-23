@@ -25,12 +25,13 @@ export const site = {
    * TODO: replace with the office's real coordinates — these are Kigali city
    * centre, not the actual address. Right-click the spot in any map and copy
    * the latitude/longitude. `span` is how much ground the frame shows, in
-   * degrees: smaller is more zoomed in.
+   * degrees: smaller is more zoomed in. 0.004 is roughly 450m across, close
+   * enough to read the street the office is on.
    */
   map: {
     lat: -1.9441,
     lng: 30.0619,
-    span: 0.012,
+    span: 0.004,
     label: 'Kigali, Rwanda',
   },
   socials: [
@@ -45,10 +46,11 @@ export const site = {
  * that section; `section` is the element id the scroll-spy watches for it.
  */
 export const navLinks = [
+  { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/#services', label: 'Services', section: 'services' },
   { to: '/#projects', label: 'Projects', section: 'projects' },
-  { to: '/#process', label: 'Process', section: 'process' },
+  { to: '/story', label: 'Our story' },
   { to: '/contact', label: 'Contact' },
 ]
 
@@ -129,69 +131,38 @@ export const processSteps = [
 ]
 
 /**
- * Leadership and team, shown on the About page.
+ * The founder, and the story of the practice, shown on the About page.
  *
- * SAMPLE CONTENT — replace every name, role and biography below with the real
- * people. Drop headshots into `public/media/team/` and point `photo` at them;
- * a portrait crop around 800x1000 matches the frame. Leave `photo` unset and
- * the card falls back to the person's initials, so the section still reads
- * properly before any photographs exist.
+ * TODO — to confirm before this goes out: the founding year is given here as
+ * 2009; the site's `stats` still says "14 yrs Combined practice", which does
+ * not agree with it. Fix whichever is wrong.
  *
- *   lead → true puts the person in the leadership row above the wider team
+ * `photo` is empty on purpose. Drop a portrait into `public/media/team/`
+ * (a 4:5 crop, around 800x1000) and point `photo` at it; until then the frame
+ * holds his initials, so the section reads as finished rather than broken.
  */
-export const team = [
-  {
-    id: 'managing-director',
-    name: 'Name Surname',
-    role: 'Managing Director',
-    lead: true,
-    bio: 'Sets the direction of the practice and stays close to the projects that carry the most risk.',
-  },
-  {
-    id: 'head-of-design',
-    name: 'Name Surname',
-    role: 'Head of Design',
-    lead: true,
-    bio: 'Leads the architecture and consultancy side, from first sketch through to approvals.',
-  },
-  {
-    id: 'construction-director',
-    name: 'Name Surname',
-    role: 'Construction Director',
-    lead: true,
-    bio: 'Owns delivery on site — programme, subcontractors, quality and handover.',
-  },
-  {
-    id: 'project-manager',
-    name: 'Name Surname',
-    role: 'Senior Project Manager',
-    bio: 'Runs the programme and the reporting clients see every week.',
-  },
-  {
-    id: 'structural-engineer',
-    name: 'Name Surname',
-    role: 'Structural Engineer',
-    bio: 'Frames, foundations and the numbers underneath them.',
-  },
-  {
-    id: 'services-engineer',
-    name: 'Name Surname',
-    role: 'Services Engineer',
-    bio: 'Electrical and mechanical design, installation and testing.',
-  },
-  {
-    id: 'quantity-surveyor',
-    name: 'Name Surname',
-    role: 'Quantity Surveyor',
-    bio: 'Costs the work up front and keeps it honest as the job moves.',
-  },
-  {
-    id: 'site-supervisor',
-    name: 'Name Surname',
-    role: 'Site Supervisor',
-    bio: 'On site daily, holding the standard the drawings set.',
-  },
-]
+export const leadership = {
+  name: 'Kwitonda Jean De Dieu',
+  role: 'Founder & CEO',
+  photo: '',
+  story: [
+    'Kwitonda Jean De Dieu trained as an architect at the University of Rwanda, and spent the years after graduating working through a succession of firms — drawing, detailing and supervising buildings for other people, on the projects that taught him how a scheme survives contact with a site.',
+    'He founded Global Design Consultancy and Construction Company Ltd in 2009, to keep the designing and the building in the same hands rather than handing drawings over at the site gate. The practice has grown from single houses into university faculties, commercial blocks and multi-unit housing — larger work, run the same way.',
+  ],
+}
+
+/**
+ * The wider team, shown beneath the founder.
+ *
+ * Empty on purpose: the section hides itself while there is nobody in here, so
+ * no placeholder names ever reach the site. Add entries and it appears —
+ *
+ *   { id: 'site-manager', name: 'Name Surname', role: 'Site Manager',
+ *     bio: 'One line on what they hold.', photo: '/media/team/name.jpg' }
+ *
+ * `bio` and `photo` are both optional.
+ */
+export const team = []
 
 /* SAMPLE CONTENT: replace with approved client quotes. */
 export const testimonials = [

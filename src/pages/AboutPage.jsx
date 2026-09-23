@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal.jsx'
 import Icon from '../components/Icon.jsx'
 import Counters from '../components/Counters.jsx'
-import Team from '../components/Team.jsx'
 import Process from '../components/Process.jsx'
 import Testimonials from '../components/Testimonials.jsx'
 import CTA from '../components/CTA.jsx'
@@ -25,8 +24,8 @@ export default function AboutPage() {
       <header className="pagehead pagehead--about">
         <img
           className="pagehead__bg"
-          src="/media/about/team.jpg"
-          alt="The team around a floor plan, marking up the next stage of a job"
+          src="/media/about/site-activity.jpg"
+          alt="A concrete pump reaching over the deck during a pour on site"
           fetchPriority="high"
           decoding="async"
         />
@@ -130,7 +129,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Team />
       <Process />
       <Testimonials />
       <CTA />

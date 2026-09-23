@@ -91,6 +91,8 @@ export default function Contact() {
               </Reveal>
             ))}
           </div>
+
+          <LocationMap />
         </Reveal>
 
         <Reveal as="form" variant="right" className="form" onSubmit={onSubmit} noValidate>
@@ -150,10 +152,6 @@ export default function Contact() {
           </div>
         </Reveal>
 
-      </div>
-
-      <div className="container">
-        <LocationMap />
       </div>
     </section>
   )

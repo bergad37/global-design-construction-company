@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Reveal from './Reveal.jsx'
 import Icon from './Icon.jsx'
+import { useInView } from '../hooks/useInView.js'
+import { useInterval } from '../hooks/useInterval.js'
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion.js'
 
 /**
  * The cards are laid out as a bento rather than a uniform grid, so the section
@@ -39,6 +43,49 @@ export function bands(count) {
   return cells
 }
 
+/** How long a frame holds on a card before the next one fades up, in ms. */
+const HOLD = 4200
+
+/**
+ * The photographs on a card, cross-faded.
+ *
+ * `image` and `detail` are two frames every project already carries, and they
+ * are never the same photograph, so a card shows more of the job than one
+ * fixed picture of it. The cards are staggered off each other's beat — a row
+ * all turning over at once reads as a glitch rather than as movement.
+ *
+ * Nothing starts until the card has been scrolled to, and reduced motion holds
+ * it on the first frame.
+ */
+function CardFrames({ project, index }) {
+  const reduced = usePrefersReducedMotion()
+  const [ref, inView] = useInView()
+  const [shown, setShown] = useState(0)
+
+  const frames = [...new Set([project.image, project.detail].filter(Boolean))]
+
+  useInterval(
+    () => setShown((n) => (n + 1) % frames.length),
+    reduced || !inView || frames.length < 2 ? null : HOLD + (index % 4) * 900,
+  )
+
+  return (
+    <div className="proj__thumb" ref={ref}>
+      {frames.map((src, n) => (
+        <img
+          key={src}
+          className={n === shown ? 'is-on' : ''}
+          src={src}
+          alt={n === 0 ? project.alt : ''}
+          aria-hidden={n === 0 ? undefined : true}
+          loading="lazy"
+          decoding="async"
+        />
+      ))}
+    </div>
+  )
+}
+
 /**
  * `replayKey` is mixed into each card's React key so changing a filter remounts
  * the cards and replays their reveal, the way the home section always did.
@@ -72,9 +119,7 @@ export default function ProjectGrid({ items, replayKey = '', variant = 'bento' }
           <Link className="proj__link" to={`/projects/${project.id}`}>
             <span className="sr-only">{project.title}</span>
           </Link>
-          <div className="proj__thumb">
-            <img src={project.image} alt={project.alt} loading="lazy" decoding="async" />
-          </div>
+          <CardFrames project={project} index={i} />
           <div className="proj__veil" />
 
           <div className="proj__metric">

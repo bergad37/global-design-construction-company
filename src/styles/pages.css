@@ -20,13 +20,20 @@
 }
 .pagehead__inner{max-width:48rem}
 
-/* The About banner carries the team photograph, which is a flat-lay shot from
-   above: squeezed into the usual shallow band it loses the hard hats top and
-   bottom and becomes a picture of a drawing. This holds the band to roughly
-   2.2:1, where the people still read, and sits the wording low over it. */
+/* The About banner carries the site shot — the concrete pump reaching over the
+   deck. It is a wide frame (about 2:1), so the band is held to roughly 2.2:1
+   and crops almost nothing, and the wording sits low beneath the boom. */
 .pagehead--about{
   min-height:clamp(380px,45vw,640px);
   display:flex;flex-direction:column;justify-content:flex-end;
+}
+/* Less shade than the other banners: the machine is the reason this photograph
+   is here. Measured, the h1 still sits on about 59% cover (down from 72%) plus
+   its own text-shadow, so the heading holds while the boom reads clearly. */
+.pagehead--about .pagehead__scrim{
+  background:
+    linear-gradient(to top, rgba(6,22,36,.7) 0%, rgba(6,22,36,.4) 40%, rgba(6,22,36,.22) 100%),
+    linear-gradient(to right, rgba(8,29,47,.46) 0%, rgba(8,29,47,.14) 60%, rgba(8,29,47,0) 100%);
 }
 /* the contact page runs straight into the form, so its banner sits lower */
 .pagehead--short{padding-block:calc(var(--nav-h) + clamp(40px,5vw,72px)) clamp(48px,5vw,80px)}
@@ -166,9 +173,9 @@
 .aboutpage::after{content:"";position:fixed;inset:0;pointer-events:none}
 .aboutpage::before{
   z-index:-2;
-  background:url('/media/about/team.jpg') center center / cover no-repeat;
+  background:url('/media/about/site-activity.jpg') center center / cover no-repeat;
 }
-.aboutpage::after{z-index:-1;background:rgba(245,245,242,.91)}
+.aboutpage::after{z-index:-1;background:rgba(245,245,242,.92)}
 
 /* ---------- about: disciplines list ---------- */
 .disciplines{display:grid;gap:0;border-top:1px solid rgba(18,59,93,.12)}
