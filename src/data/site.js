@@ -46,11 +46,9 @@ export const site = {
  * that section; `section` is the element id the scroll-spy watches for it.
  */
 export const navLinks = [
-  { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/#services', label: 'Services', section: 'services' },
   { to: '/#projects', label: 'Projects', section: 'projects' },
-  { to: '/story', label: 'Our story' },
   { to: '/contact', label: 'Contact' },
 ]
 

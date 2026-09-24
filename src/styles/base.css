@@ -83,11 +83,14 @@
    stays in flow so the link takes its natural width at that height — no
    aspect-ratio is hardcoded, so swapping in a differently proportioned file
    just works. The colour lockup is layered over it and contributes no size. */
+/* With no Home tab, this is the only way back to the landing page, so it gets
+   a hover state of its own rather than sitting there looking like a graphic. */
 .nav__logo{
   position:relative;flex:0 0 auto;display:block;
   height:var(--logo-h);
-  transition:height .4s var(--ease);
+  transition:height .4s var(--ease),opacity .3s var(--ease),transform .3s var(--ease);
 }
+.nav__logo:hover{opacity:.82;transform:translateY(-1px)}
 .nav__logo img{
   height:100%;width:auto;display:block;
   transition:opacity .4s var(--ease);

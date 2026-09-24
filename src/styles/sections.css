@@ -43,6 +43,16 @@
 .about__stat b{display:block;font-family:var(--ff-display);font-weight:800;font-size:2.4rem;line-height:1}
 .about__stat small{display:block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;margin-top:.35rem;opacity:.92}
 
+.about__more{
+  display:inline-flex;align-items:center;gap:.5rem;margin-top:.4rem;
+  font-family:var(--ff-display);font-size:.8rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--navy);
+  border-bottom:1px solid rgba(18,59,93,.25);padding-bottom:.2rem;
+  transition:color .35s var(--ease),border-color .35s var(--ease),gap .35s var(--ease);
+}
+.about__more svg{width:14px;height:14px}
+.about__more:hover{color:var(--orange);border-color:var(--orange);gap:.8rem}
+
 .about__pillars{display:grid;gap:1.1rem;margin-top:2rem}
 .pillar{display:flex;gap:1.1rem;align-items:flex-start;padding:1.1rem 1.2rem;background:#fff;border-radius:var(--radius);border:1px solid rgba(18,59,93,.07);transition:transform .5s var(--ease),box-shadow .5s var(--ease),opacity .9s var(--ease-out-expo)}
 .pillar:hover{transform:translateX(8px);box-shadow:var(--shadow)}

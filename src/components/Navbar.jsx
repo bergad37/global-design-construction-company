@@ -52,13 +52,8 @@ export default function Navbar() {
     return () => spy.disconnect();
   }, [onHome]);
 
-  const isActive = (link) => {
-    if (link.section) return onHome && section === link.section;
-    // Home stays lit only until a watched section scrolls under the bar,
-    // otherwise it and Services would both read as current at once.
-    if (link.to === "/") return onHome && !section;
-    return pathname === link.to;
-  };
+  const isActive = (link) =>
+    link.section ? onHome && section === link.section : pathname === link.to;
 
   const stuck = y > 40;
   const hidden = !open && y > 520 && direction === "down";

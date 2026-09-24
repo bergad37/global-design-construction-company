@@ -76,6 +76,13 @@ export default function AboutPage() {
               We work across commercial, residential, public and industrial projects, at
               every scale from an eleven-week fit-out to a nine-hectare logistics park.
             </p>
+
+            {/* Our story is no longer a nav tab, so this and the footer are how
+                anyone reaches it. */}
+            <Link className="about__more" to="/story">
+              Read how the practice started
+              <Icon name="arrowUpRight" strokeWidth={2.4} />
+            </Link>
           </Reveal>
         </div>
       </section>
