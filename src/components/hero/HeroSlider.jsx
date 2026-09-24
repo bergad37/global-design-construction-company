@@ -19,8 +19,24 @@ const FIRST_DWELL = 12000
 /** Horizontal travel needed before a drag counts as a slide change. */
 const SWIPE = 60
 
+/**
+ * The opening slide is a poster rather than a project: the R02 render, shown
+ * without a name badge for now. The featured projects follow it. Once the
+ * render has a project of its own, give it a `featured` entry in projects.js
+ * and drop this.
+ */
+const POSTER = {
+  id: 'poster',
+  poster: true,
+  hero: '/media/hero/r02-poster.jpg',
+  heroSmall: '/media/hero/r02-poster@sm.jpg',
+  image: '/media/hero/r02-poster@sm.jpg',
+  alt: 'Render of a residential block with glazed balconies and planted terraces',
+}
+const SLIDES = [POSTER, ...featuredProjects]
+
 export default function HeroSlider({ ready }) {
-  const slides = featuredProjects
+  const slides = SLIDES
   const count = slides.length
   const reduced = usePrefersReducedMotion()
 
@@ -80,6 +96,7 @@ export default function HeroSlider({ ready }) {
   return (
     <section
       className="hero"
+      style={{ '--dwell': `${dwell}ms` }}
       id="top"
       aria-label="Featured projects"
       onKeyDown={onKeyDown}
@@ -132,11 +149,20 @@ export default function HeroSlider({ ready }) {
               nothing else: category, location and the rest belong on the
               project's own page, and a second line here only made the badge
               tall enough to eat into the photograph behind it. */}
-          <Link className="hero__badge" to={`/projects/${active.id}`} key={active.id}>
-            <span className="hero__badge-bar" aria-hidden="true" />
-            <b className="hero__badge-name">{active.title}</b>
-            <Icon name="arrowUpRight" strokeWidth={2.6} />
-          </Link>
+          {active.poster ? (
+            // an invisible stand-in with the badge's own box, so the rail
+            // keeps its height and the headline does not shift on the poster
+            <span className="hero__badge is-placeholder" aria-hidden="true">
+              <span className="hero__badge-bar" />
+              <b className="hero__badge-name">&nbsp;</b>
+            </span>
+          ) : (
+            <Link className="hero__badge" to={`/projects/${active.id}`} key={active.id}>
+              <span className="hero__badge-bar" aria-hidden="true" />
+              <b className="hero__badge-name">{active.title}</b>
+              <Icon name="arrowUpRight" strokeWidth={2.6} />
+            </Link>
+          )}
 
           <div className="hero__nav">
             <span className="hero__count">
@@ -152,7 +178,7 @@ export default function HeroSlider({ ready }) {
                     type="button"
                     className={`hero__thumb ${i === index ? 'is-active' : ''}`}
                     onClick={() => goTo(i)}
-                    aria-label={`Show ${project.title}`}
+                    aria-label={project.poster ? 'Show the opening slide' : `Show ${project.title}`}
                     aria-current={i === index}
                   >
                     <img src={project.image} alt="" decoding="async" />

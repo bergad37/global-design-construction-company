@@ -37,8 +37,8 @@ export default function About() {
           />
           <MaskedImage
             className="about__inset"
-            src="/media/about/completed-building.jpg"
-            alt="Kimironko Apartment finished and lit after handover"
+            src="/media/about/r05.jpg"
+            alt="Aerial render of a residential block with a rooftop pool and planted balconies"
           />
           {/* <FloatingStat /> */}
         </Reveal>

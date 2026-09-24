@@ -89,8 +89,8 @@ export const services = [
     icon: 'architecture',
     title: 'Architecture & Design',
     body: 'Concept design, detailed drawings, 3D visualisation and authority approvals — resolved before anyone breaks ground.',
-    image: '/media/services/architecture.jpg',
-    alt: 'Faceted white and glass civic building against a clear sky',
+    image: '/media/services/architecture-r02.jpg',
+    alt: 'Render of a residential block with glazed balconies and planted terraces',
   },
   {
     id: 'construction',
@@ -98,8 +98,8 @@ export const services = [
     icon: 'construction',
     title: 'Construction & Build',
     body: 'Main contracting, civil works, finishes and MEP installation delivered by supervised in-house crews and vetted subcontractors.',
-    image: '/media/services/construction.jpg',
-    alt: 'Welder joining steelwork, sparks flying',
+    image: '/media/projects/gallery/rebero-3.jpg',
+    alt: 'Rebero Villa frame under construction with the crew on site',
   },
   {
     id: 'project-management',

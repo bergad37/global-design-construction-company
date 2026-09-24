@@ -40,8 +40,11 @@ export default function Preloader({ onDone }) {
 
   return (
     <div id="preloader" className={done ? 'is-done' : ''} role="status" aria-label="Loading">
+      {/* the R02 render under a navy scrim, so the splash reads as the
+          practice's own work rather than a blank white page */}
+      <div className="pre__bg" aria-hidden="true" />
       <div className="pre__inner">
-        <img className="pre__mark" src="/favicon.svg" alt="" aria-hidden="true" />
+        <img className="pre__mark" src="/logo-white.png" alt="" aria-hidden="true" />
         <div className="pre__bar"><i style={{ width: `${pct}%` }} /></div>
         <div className="pre__word">Plan · Design · Build · Grow</div>
       </div>

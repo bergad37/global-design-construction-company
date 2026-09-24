@@ -29,21 +29,33 @@
 
 /* ---------- preloader ---------- */
 #preloader{
-  position:fixed;inset:0;z-index:9999;background:var(--offwhite);
-  display:grid;place-items:center;gap:0;
+  position:fixed;inset:0;z-index:9999;background:var(--navy-900);
+  display:grid;place-items:center;gap:0;overflow:hidden;isolation:isolate;
   transition:opacity .6s var(--ease),visibility .6s;
 }
 #preloader.is-done{opacity:0;visibility:hidden;pointer-events:none}
-.pre__inner{display:grid;justify-items:center;gap:22px}
+/* the building sits behind a deep navy wash: dimmed enough that the logo and
+   the bar own the screen, with a slow push-in so it does not feel static */
+.pre__bg{
+  position:absolute;inset:-4%;z-index:-1;
+  background:
+    radial-gradient(ellipse at center,rgba(8,29,47,.55) 0%,rgba(8,29,47,.88) 70%,rgba(8,29,47,.96) 100%),
+    linear-gradient(180deg,rgba(18,59,93,.55),rgba(8,29,47,.75)),
+    url('/media/hero/r02-poster@sm.jpg') center / cover no-repeat;
+  animation:pre-bg 4s var(--ease-out-expo) both;
+}
+@keyframes pre-bg{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}
+.pre__inner{position:relative;display:grid;justify-items:center;gap:26px;padding:0 16px}
 /* the logo is a flat-filled trace, so it settles in rather than stroke-drawing */
 .pre__mark{
-  width:92px;height:92px;object-fit:contain;
+  width:min(280px,70vw);height:auto;object-fit:contain;
+  filter:drop-shadow(0 10px 30px rgba(0,0,0,.45));
   animation:mark-in 1.1s var(--ease-out-expo) forwards;
 }
 @keyframes mark-in{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
-.pre__bar{width:190px;height:3px;background:rgba(18,59,93,.14);overflow:hidden}
+.pre__bar{width:190px;height:3px;background:rgba(255,255,255,.18);overflow:hidden}
 .pre__bar i{display:block;height:100%;width:0;background:var(--orange);transition:width .25s linear}
-.pre__word{font-family:var(--ff-display);font-size:.7rem;font-weight:700;letter-spacing:.34em;color:var(--steel);text-transform:uppercase}
+.pre__word{font-family:var(--ff-display);font-size:.7rem;font-weight:700;letter-spacing:.34em;color:rgba(255,255,255,.72);text-transform:uppercase}
 
 /* ---------- cursor ---------- */
 .cursor{
