@@ -43,6 +43,50 @@ export const FILTERS = [
 
 export const projects = [
   {
+    id: 'kagugu-apartment',
+    title: 'Kagugu Apartment',
+    category: 'residential',
+    categoryLabel: 'Residential',
+    location: 'Kagugu, Gasabo — Kigali',
+    year: 'In progress',
+    duration: 'Ongoing',
+    client: 'Private developer',
+    status: 'On site',
+    scope: 'Architecture · Structure · Construction',
+    summary: 'An apartment block of glazed balconies and planted terraces, with a rooftop pool.',
+    metric: { value: '6', label: 'Storeys' },
+    // Still on site, so the hero and the covers are the renders: R02 at street
+    // level for the hero and the card, R05 from above as the second frame.
+    // The site photographs are in the gallery.
+    featured: true,
+    hero: '/media/hero/kagugu-apartment.jpg',
+    heroSmall: '/media/hero/kagugu-apartment@sm.jpg',
+    image: '/media/projects/kagugu-apartment.jpg',
+    detail: '/media/projects/kagugu-apartment-detail.jpg',
+    design: {
+      src: '/media/projects/design/kagugu-apartment.jpg',
+      width: 1600,
+      height: 1052,
+      alt: 'Architect’s aerial render of the block, its rooftop pool and the parking court',
+    },
+    alt: 'Architect’s render of the apartment block with glazed balconies and planted terraces',
+    gallery: [
+      { src: '/media/projects/gallery/kagugu-1.jpg', alt: 'Raft reinforcement and column cages laid out across the excavated plot' },
+      { src: '/media/projects/gallery/kagugu-2.jpg', alt: 'The stone retaining walls around the basement dig, with the crew fixing steel' },
+    ],
+    facts: [
+      { label: 'Location', value: 'Kagugu, Gasabo District' },
+      { label: 'Use', value: 'Residential apartments' },
+      { label: 'Contract', value: 'Architecture, structural design and construction' },
+      { label: 'Status', value: 'On site — foundations' },
+    ],
+    body: [
+      'An apartment block in Kagugu: stacked floors of glazed balconies stepping in and out of the facade, planting hung from the slab edges, and a rooftop terrace with a pool looking out over the city.',
+      'The plot was dug out for a lower level and retained on three sides with stone walls. The raft and the column starters are going in now, and the frame will rise from there.',
+      'The balconies do more than add floor area. Their deep slab edges shade the glazing below them, so every apartment gets an outdoor room and a cooler interior from the same piece of structure.',
+    ],
+  },
+  {
     id: 'ur-cst-mining-geology',
     title: 'UR-CST Mining & Geology Building',
     category: 'institutional',
@@ -90,14 +134,14 @@ export const projects = [
     ],
   },
   {
-    id: 'isai-busogo-smart-classroom',
-    title: 'ISAI Busogo Smart Classroom',
+    id: 'ur-cavm-busogo-smart-classroom',
+    title: 'UR-CAVM Busogo Smart Classroom',
     category: 'institutional',
     categoryLabel: 'Education & Institutional',
     location: 'Busogo, Musanze — Rwanda',
     year: 'Completed',
     duration: 'To be confirmed',
-    client: 'ISAI Busogo',
+    client: 'UR-CAVM Busogo',
     status: 'Completed',
     scope: 'Architecture · Construction · ICT fit-out',
     summary: 'A brick-clad teaching block with a deep colonnade and a smart classroom fit-out.',
@@ -119,13 +163,13 @@ export const projects = [
       { src: '/media/projects/gallery/isai-2.jpg', alt: 'The brick colonnade and paved walkway along the classroom face' },
     ],
     facts: [
-      { label: 'Client', value: 'ISAI Busogo' },
+      { label: 'Client', value: 'UR-CAVM Busogo' },
       { label: 'Location', value: 'Busogo, Musanze District' },
       { label: 'Contract', value: 'Architecture, construction and ICT fit-out' },
       { label: 'Status', value: 'Completed and in use' },
     ],
     body: [
-      'A teaching building for ISAI Busogo, fitted out as a smart classroom — the room, its power and its data all designed together rather than the equipment being chased into a finished shell.',
+      'A teaching building for UR-CAVM Busogo, fitted out as a smart classroom — the room, its power and its data all designed together rather than the equipment being chased into a finished shell.',
       'The face of the building is a deep brick colonnade. It shades the glazing from the low sun, keeps the walkway dry through the rains that this part of the country gets reliably, and does both without a single mechanical part.',
       'Brick was chosen for what it costs over time rather than what it costs on day one: laid locally, it needs no coating, no repainting cycle and very little of anyone’s attention once it is up.',
     ],

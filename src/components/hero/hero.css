@@ -189,7 +189,6 @@
 }
 .hero__badge svg{width:15px;height:15px;flex:0 0 auto;color:var(--orange);transition:transform .4s var(--ease)}
 .hero__badge:hover svg{transform:translate(3px,-3px);color:#fff}
-.hero__badge.is-placeholder{visibility:hidden;animation:none}
 
 /* slide counter and thumbnails */
 .hero__nav{

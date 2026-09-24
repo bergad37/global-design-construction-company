@@ -41,7 +41,7 @@
   background:
     radial-gradient(ellipse at center,rgba(8,29,47,.55) 0%,rgba(8,29,47,.88) 70%,rgba(8,29,47,.96) 100%),
     linear-gradient(180deg,rgba(18,59,93,.55),rgba(8,29,47,.75)),
-    url('/media/hero/r02-poster@sm.jpg') center / cover no-repeat;
+    url('/media/hero/kagugu-apartment@sm.jpg') center / cover no-repeat;
   animation:pre-bg 4s var(--ease-out-expo) both;
 }
 @keyframes pre-bg{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}
