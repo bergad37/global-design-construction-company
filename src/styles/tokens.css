@@ -48,7 +48,7 @@
    breathing room, so the bar doesn't grow by the same amount. */
 @media (max-width:767px){
   :root{
-    --logo-h:min(104px, 28vw);
+    --logo-h:min(90px, 24vw);
     --logo-h-stuck:calc(var(--logo-h) * .82);
     --nav-h:max(84px, var(--logo-h));
     --nav-h-stuck:max(70px, var(--logo-h-stuck));
