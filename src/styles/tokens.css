@@ -42,6 +42,19 @@
   --nav-h-stuck:max(70px, calc(var(--logo-h-stuck) + 22px));
 }
 
+/* The artwork only fills about half the height of its file; the rest is
+   transparent padding, so at 60px the visible logo shrank to around 32px on
+   phones. Make it larger here and let that built-in padding act as the bar's
+   breathing room, so the bar doesn't grow by the same amount. */
+@media (max-width:767px){
+  :root{
+    --logo-h:min(104px, 28vw);
+    --logo-h-stuck:calc(var(--logo-h) * .82);
+    --nav-h:max(84px, var(--logo-h));
+    --nav-h-stuck:max(70px, var(--logo-h-stuck));
+  }
+}
+
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
