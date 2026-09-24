@@ -77,8 +77,6 @@ export default function AboutPage() {
               every scale from an eleven-week fit-out to a nine-hectare logistics park.
             </p>
 
-            {/* Our story is no longer a nav tab, so this and the footer are how
-                anyone reaches it. */}
             <Link className="about__more" to="/story">
               Read how the practice started
               <Icon name="arrowUpRight" strokeWidth={2.4} />

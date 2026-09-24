@@ -15,7 +15,7 @@ export default function StoryPage() {
         />
         <div className="pagehead__scrim" />
         <div className="container pagehead__inner">
-          <span className="eyebrow">Our story</span>
+          <span className="eyebrow">GDCC Story</span>
           <h1>How the practice started.</h1>
           <p>
             One architect, a decade of other people&rsquo;s sites, and a decision to keep

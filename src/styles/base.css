@@ -130,6 +130,8 @@
   transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease-out-expo);
 }
 .nav__link:hover::after,.nav__link.is-active::after{transform:scaleX(1);transform-origin:left}
+.nav__highlight{color:var(--orange-light)}
+.nav.is-stuck .nav__highlight{color:var(--orange)}
 .nav__cta{margin-left:.6rem;padding:.8rem 1.35rem;font-size:.78rem}
 
 .nav__burger{

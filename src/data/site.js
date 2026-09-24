@@ -44,11 +44,13 @@ export const site = {
 /**
  * `to` is a router path. A `/#id` link lands on the home page and scrolls to
  * that section; `section` is the element id the scroll-spy watches for it.
+ * `highlight` is a word of the label picked out in light orange.
  */
 export const navLinks = [
   { to: '/about', label: 'About' },
   { to: '/#services', label: 'Services', section: 'services' },
   { to: '/#projects', label: 'Projects', section: 'projects' },
+  { to: '/story', label: 'GDCC Story', highlight: 'GDCC' },
   { to: '/contact', label: 'Contact' },
 ]
 

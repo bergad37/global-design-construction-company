@@ -4,6 +4,19 @@ import Icon from "./Icon.jsx";
 import { useScrollPosition } from "../hooks/useScrollPosition.js";
 import { navLinks, site } from "../data/site.js";
 
+// Renders a link's label, with its `highlight` word (if any) in light orange.
+function Label({ link }) {
+  if (!link.highlight) return link.label;
+  const [before, after] = link.label.split(link.highlight);
+  return (
+    <>
+      {before}
+      <span className="nav__highlight">{link.highlight}</span>
+      {after}
+    </>
+  );
+}
+
 export default function Navbar() {
   const { y, direction } = useScrollPosition();
   const { pathname, hash } = useLocation();
@@ -84,7 +97,7 @@ export default function Navbar() {
               className={`nav__link ${isActive(link) ? "is-active" : ""}`}
               to={link.to}
             >
-              {link.label}
+              <Label link={link} />
             </Link>
           ))}
           <Link className="btn btn--primary nav__cta" to="/contact">
@@ -115,7 +128,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 style={{ transitionDelay: open ? `${0.18 + i * 0.07}s` : "0s" }}
               >
-                {link.label}
+                <Label link={link} />
               </Link>
             ),
           )}
