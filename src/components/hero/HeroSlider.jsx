@@ -5,11 +5,17 @@ import HeroHeadline from './HeroHeadline.jsx'
 import { useInterval } from '../../hooks/useInterval.js'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.js'
 import { featuredProjects } from '../../data/projects.js'
-import { site } from '../../data/site.js'
 import './hero.css'
 
 /** How long each project holds the stage, in ms. Also drives the progress bar. */
 const DWELL = 6000
+/**
+ * The opening slide holds longer than the rest, because it is the one carrying
+ * the wording. At a readable typing pace the headline and the line of copy take
+ * a little under seven seconds to write themselves; this leaves a couple of
+ * seconds to actually read them before the stage moves on.
+ */
+const FIRST_DWELL = 12000
 /** Horizontal travel needed before a drag counts as a slide change. */
 const SWIPE = 60
 
@@ -32,12 +38,16 @@ export default function HeroSlider({ ready }) {
   const prev = useCallback(() => goTo(index - 1), [goTo, index])
 
   // Autoplay. Reduced motion or a paused slider passes `null`, which stops it.
-  useInterval(next, reduced || paused ? null : DWELL)
+  const dwell = index === 0 ? FIRST_DWELL : DWELL
+  useInterval(next, reduced || paused ? null : dwell)
 
-  // Hovering pauses the slideshow so the badge can be read — but only for a
-  // pointer that can actually hover. A touch fires a compatibility mouseenter
-  // with no matching mouseleave, so wiring this to onMouseEnter left autoplay
-  // paused for good on phones from the first tap or scroll.
+  // Hovering pauses the slideshow so the badge and thumbnails can be read —
+  // but only over the rail that holds them, not the whole hero. On the section
+  // it also fired as the page scrolled the hero under a stationary cursor,
+  // which stopped the slideshow the moment anyone scrolled.
+  //
+  // The pointerType guard stays: a touch fires a compatibility mouseenter with
+  // no matching mouseleave, which would park autoplay for good on a phone.
   const onPointerEnter = (e) => { if (e.pointerType !== 'touch') setPaused(true) }
   const onPointerLeave = (e) => { if (e.pointerType !== 'touch') setPaused(false) }
 
@@ -72,8 +82,6 @@ export default function HeroSlider({ ready }) {
       className="hero"
       id="top"
       aria-label="Featured projects"
-      onPointerEnter={onPointerEnter}
-      onPointerLeave={onPointerLeave}
       onKeyDown={onKeyDown}
       onPointerDown={onPointerDown}
       onPointerUp={onPointerUp}
@@ -103,14 +111,21 @@ export default function HeroSlider({ ready }) {
       {/* ---------- headline and copy, deliberately kept short ---------- */}
       <div className="container hero__inner">
         <div className="hero__text">
-          <HeroHeadline ready={ready} />
-
-          <p className="hero__copy">{site.heroIntro}</p>
+          {/* The wording belongs to the opening slide: it types itself out as
+              soon as the preloader hands the page over, and clears again while
+              the other projects hold the stage, so their photographs are seen
+              without a claim written across them. Coming back round to the
+              first slide types it again. */}
+          <HeroHeadline ready={ready} show={ready && index === 0} />
         </div>
       </div>
 
       {/* ---------- project rail ---------- */}
-      <div className="hero__rail">
+      <div
+        className="hero__rail"
+        onPointerEnter={onPointerEnter}
+        onPointerLeave={onPointerLeave}
+      >
         <div className="container hero__rail-inner">
 
           {/* The name badge for whichever project is on the stage. The name and
@@ -146,7 +161,7 @@ export default function HeroSlider({ ready }) {
                         className="hero__thumb-progress"
                         key={index}
                         style={{
-                          animationDuration: `${DWELL}ms`,
+                          animationDuration: `${dwell}ms`,
                           animationPlayState: paused || reduced ? 'paused' : 'running',
                         }}
                       />

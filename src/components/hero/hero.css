@@ -75,7 +75,43 @@
 }
 .hero__text{max-width:40rem}
 
-.hero__tagline{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-bottom:1.3rem}
+/* Faded rather than unmounted or clipped. It keeps its place in the layout, so
+   nothing shifts as the wording comes and goes with the first slide, and the h1
+   stays in the document throughout for search engines and screen readers.
+   Opacity is also the only one of the three that can fade out — clipping snaps,
+   and this block is now shown and hidden on every turn of the slider. */
+.hero__wording{
+  opacity:0;transform:translateY(10px);
+  /* The long one is the way OUT: the wording lingers and dissolves while the
+     next project is already fading up behind it. Going in is quicker — this
+     rule governs the transition to the hidden state, the one below it the
+     transition to the shown state. */
+  transition:opacity 1.5s var(--ease),transform 1.5s var(--ease);
+}
+.hero__wording.is-on{
+  opacity:1;transform:none;
+  transition:opacity .5s var(--ease),transform .6s var(--ease-out-expo);
+}
+
+/* the typing caret */
+.hero__caret{
+  display:inline-block;width:.07em;height:.95em;margin-left:.06em;
+  vertical-align:-.1em;background:currentColor;
+  animation:caretBlink 1s steps(1,end) infinite;
+}
+@keyframes caretBlink{50%{opacity:0}}
+/* the headline reserves its full height, so the copy below does not jump
+   upward line by line as the sentence types itself out */
+.hero__title{min-height:3.4em}
+.hero__copy{min-height:3.2em}
+
+/* The chips belong to the hero, not to the typed block below them: they fade
+   up once and stay for every project, while the wording comes and goes. */
+.hero__tagline{
+  display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-bottom:1.3rem;
+  opacity:0;transition:opacity .6s var(--ease);
+}
+.hero__tagline.is-on{opacity:1}
 .hero__tagline span{
   font-family:var(--ff-display);font-size:.68rem;font-weight:700;letter-spacing:.26em;
   text-transform:uppercase;color:rgba(255,255,255,.72);padding:.45rem .9rem;
@@ -98,7 +134,8 @@
   content:"";position:absolute;left:0;right:0;bottom:.08em;height:.09em;background:rgba(242,140,40,.42);
   transform:scaleX(0);transform-origin:left;
 }
-.is-ready .hero__title em::after{animation:underline 1s var(--ease-out-expo) 1.25s forwards}
+/* drawn once the accent has finished typing, not on a page-load timer */
+.hero__title em.is-done::after{animation:underline 1s var(--ease-out-expo) .15s forwards}
 @keyframes underline{to{transform:scaleX(1)}}
 
 .hero__rotator{display:inline-grid;vertical-align:bottom;height:1.06em;overflow:hidden}
