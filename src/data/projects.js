@@ -13,6 +13,8 @@
  *                twin; without those it should stay out of the slider.
  *   hero       → 2400x1351 landscape frame (with an @sm 1280x720 twin)
  *   image      → the frame used by the grid cards and the hero thumbnails
+ *   heroThumb  → optional; the hero thumbnail when it should match a `hero`
+ *                that is a different picture from `image`
  *   detail     → second frame; also the banner on non-featured project pages
  *   design     → the architect's render, shown on the project page between the
  *                write-up and the photographs. `width`/`height` are the file's
@@ -381,9 +383,71 @@ export const projects = [
       'The blocks are set apart and staggered, which gives every unit a private outlook and lets air move between them instead of trapping heat in a single continuous slab of building.',
     ],
   },
+  {
+    id: 'imena-school',
+    title: 'Imena School',
+    category: 'institutional',
+    categoryLabel: 'Education & Institutional',
+    location: 'Jabana, Gasabo — Kigali',
+    year: '2017',
+    duration: '2014 – 2017',
+    client: 'Imena School',
+    status: 'Completed',
+    scope: 'Architecture · Master planning · Construction',
+    summary: 'A hillside school campus of brick teaching blocks, linked by ramps and an open court.',
+    metric: { value: '10+', label: 'Buildings' },
+    // Kept last in the list so the six-card preview on the home page stays as
+    // it was; HERO_LEAD below moves it up in the slider. The hero is the
+    // campus render rather than a photograph, with a thumbnail to match.
+    featured: true,
+    hero: '/media/hero/imena-school.jpg',
+    heroSmall: '/media/hero/imena-school@sm.jpg',
+    heroThumb: '/media/hero/imena-school@sm.jpg',
+    image: '/media/projects/imena-school.jpg',
+    detail: '/media/projects/imena-school-detail.jpg',
+    design: {
+      src: '/media/projects/design/imena-school.jpg',
+      width: 1600,
+      height: 1066,
+      alt: 'Architect’s aerial render of the whole campus, the court at its centre',
+    },
+    alt: 'Brick school block under a red hipped roof, seen across its paved forecourt',
+    gallery: [
+      { src: '/media/projects/gallery/imena-1.jpg', alt: 'The red-roofed block and its terraces, the city on the hills beyond' },
+      { src: '/media/projects/gallery/imena-2.jpg', alt: 'Two-storey classroom block behind the playground' },
+      { src: '/media/projects/gallery/imena-3.jpg', alt: 'The ramped walkway running between the brick blocks' },
+      { src: '/media/projects/gallery/imena-4.jpg', alt: 'Switchback ramps stepping down past the single-storey blocks' },
+      { src: '/media/projects/gallery/imena-5.jpg', alt: 'Stone retaining walls and rails along the upper ramp' },
+      { src: '/media/projects/gallery/imena-6.jpg', alt: 'The stepped amphitheatre seating above the paved court' },
+      { src: '/media/projects/gallery/imena-7.jpg', alt: 'The open court, the terraces and the classroom blocks behind' },
+      { src: '/media/projects/gallery/imena-8.jpg', alt: 'Brick wings and planting in a quiet inner courtyard' },
+    ],
+    facts: [
+      { label: 'Client', value: 'Imena School' },
+      { label: 'Location', value: 'Masangano, Kabuye Cell, Jabana Sector — Gasabo District' },
+      { label: 'Contract', value: 'Architecture, master planning and construction' },
+      { label: 'Built', value: '2014 – 2017' },
+      { label: 'Status', value: 'Completed and in use' },
+    ],
+    body: [
+      'A full school campus on a steep hillside: classroom blocks, a two-storey teaching wing, an open court with amphitheatre seating and the ramps that tie them together.',
+      'The site was planned as a whole before any building went up. The blocks step down the slope on their own terraces, and ramped walkways rather than stairs link one level to the next, so every part of the school can be reached on foot without a single lift.',
+      'Every block is built the same way — exposed brick, a pale concrete frame and a red hipped roof — which keeps the campus reading as one place and keeps its upkeep simple for the school.',
+    ],
+  },
 ]
 
-export const featuredProjects = projects.filter((p) => p.featured)
+/**
+ * The slider's running order is its own, so it can differ from the grid's.
+ * These open the slider in this order; every other featured project follows
+ * in the order it has in the list above.
+ */
+const HERO_LEAD = ['kagugu-apartment', 'imena-school', 'lamar-retirement-house']
+
+export const featuredProjects = [
+  ...HERO_LEAD.map((id) => projects.find((p) => p.id === id)),
+  ...projects.filter((p) => p.featured && !HERO_LEAD.includes(p.id)),
+]
 
 /** How many projects sit under each filter id, keyed the same way as FILTERS. */
 export const projectCounts = Object.fromEntries(

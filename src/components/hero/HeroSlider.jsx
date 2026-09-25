@@ -156,7 +156,7 @@ export default function HeroSlider({ ready }) {
                     aria-label={`Show ${project.title}`}
                     aria-current={i === index}
                   >
-                    <img src={project.image} alt="" decoding="async" />
+                    <img src={project.heroThumb ?? project.image} alt="" decoding="async" />
                     {i === index && (
                       <span
                         className="hero__thumb-progress"
