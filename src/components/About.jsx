@@ -15,7 +15,7 @@ function MaskedImage({ src, alt, className = '' }) {
 
 function FloatingStat() {
   const [ref, inView] = useInView({ threshold: 0.6, rootMargin: '0px' })
-  const value = useCountUp(45, inView)
+  const value = useCountUp(8, inView)
   return (
     <div ref={ref} className="about__stat">
       <b>{value}+</b>

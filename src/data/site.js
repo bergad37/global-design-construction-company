@@ -57,10 +57,10 @@ export const navLinks = [
 export const heroRotator = ['confidence.', 'landmarks.', 'communities.', 'legacy.']
 
 export const stats = [
-  { value: 120, suffix: '+', label: 'Projects delivered' },
-  { value: 45, suffix: '+', label: 'Specialists' },
-  { value: 98, suffix: '%', label: 'On-time handover' },
-  { value: 14, suffix: 'yrs', label: 'Combined practice' },
+  { value: 10, suffix: '+', label: 'Completed projects' },
+  { value: 8, suffix: '+', label: 'Specialists' },
+  { value: 99, suffix: '%', label: 'On-time handover' },
+  { value: 11, suffix: '+', label: 'Years combined practice' },
 ]
 
 export const pillars = [
@@ -133,9 +133,8 @@ export const processSteps = [
 /**
  * The founder, and the story of the practice, shown on the About page.
  *
- * TODO — to confirm before this goes out: the founding year is given here as
- * 2009; the site's `stats` still says "14 yrs Combined practice", which does
- * not agree with it. Fix whichever is wrong.
+ * Founded in 2015, which is what the "11+ Years combined practice" figure in
+ * `stats` counts from; change the two together.
  *
  * `photo` is empty on purpose. Drop a portrait into `public/media/team/`
  * (a 4:5 crop, around 800x1000) and point `photo` at it; until then the frame
@@ -147,22 +146,26 @@ export const leadership = {
   photo: '',
   story: [
     'Kwitonda Jean De Dieu trained as an architect at the University of Rwanda, and spent the years after graduating working through a succession of firms — drawing, detailing and supervising buildings for other people, on the projects that taught him how a scheme survives contact with a site.',
-    'He founded Global Design Consultancy and Construction Company Ltd in 2009, to keep the designing and the building in the same hands rather than handing drawings over at the site gate. The practice has grown from single houses into university faculties, commercial blocks and multi-unit housing — larger work, run the same way.',
+    'He founded Global Design Consultancy and Construction Company Ltd in 2015, to keep the designing and the building in the same hands rather than handing drawings over at the site gate. The practice has grown from single houses into university faculties, commercial blocks and multi-unit housing — larger work, run the same way.',
   ],
 }
 
 /**
- * The wider team, shown beneath the founder.
+ * The wider team, shown beneath the founder on the GDCC Story page.
  *
- * Empty on purpose: the section hides itself while there is nobody in here, so
- * no placeholder names ever reach the site. Add entries and it appears —
- *
- *   { id: 'site-manager', name: 'Name Surname', role: 'Site Manager',
- *     bio: 'One line on what they hold.', photo: '/media/team/name.jpg' }
- *
- * `bio` and `photo` are both optional.
+ * `photo` is empty for everyone for now, so each card shows the person's
+ * initials in a small frame. Drop a square headshot (around 300x300) into
+ * `public/media/team/` and point `photo` at it — for example
+ * photo: '/media/team/itangishaka-eliezer.jpg'. `bio` is optional too.
  */
-export const team = []
+export const team = [
+  { id: 'itangishaka-eliezer', name: 'ITANGISHAKA Eliezer', role: 'Project Manager', photo: '' },
+  { id: 'kayiranga-jean-felix', name: 'KAYIRANGA Jean Felix', role: 'Senior Engineer', photo: '' },
+  { id: 'kaburame-leandre', name: 'KABURAME Leandre', role: 'Procurement', photo: '' },
+  { id: 'hategekimana-innocent', name: 'HATEGEKIMANA Innocent', role: 'Foreman', photo: '' },
+  { id: 'ingabire-regis', name: 'INGABIRE Regis', role: 'Electrician', photo: '' },
+  { id: 'karuhanga-bernard', name: 'KARUHANGA Bernard', role: 'Mechanical', photo: '' },
+]
 
 /* SAMPLE CONTENT: replace with approved client quotes. */
 export const testimonials = [

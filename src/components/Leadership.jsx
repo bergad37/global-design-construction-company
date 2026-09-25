@@ -24,11 +24,8 @@ function Portrait({ person, className = '' }) {
 }
 
 /**
- * The founder's story, and beneath it the wider team.
- *
- * The team grid renders only when there is somebody in `team` — it is empty
- * for now, so nothing on this page is a placeholder name. Adding entries to
- * that array is all it takes to bring the grid back.
+ * The founder's story, and beneath it the wider team as compact cards: a small
+ * square frame beside the name and role, rather than a portrait per person.
  */
 export default function Leadership() {
   return (
@@ -70,10 +67,12 @@ export default function Leadership() {
                   className="person"
                   delay={Math.min(i, 5) * 0.06}
                 >
-                  <Portrait person={person} />
-                  <h3>{person.name}</h3>
-                  <span className="person__role">{person.role}</span>
-                  {person.bio && <p>{person.bio}</p>}
+                  <Portrait person={person} className="person__frame--sm" />
+                  <div className="person__text">
+                    <h3>{person.name}</h3>
+                    <span className="person__role">{person.role}</span>
+                    {person.bio && <p>{person.bio}</p>}
+                  </div>
                 </Reveal>
               ))}
             </div>

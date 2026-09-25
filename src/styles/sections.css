@@ -399,11 +399,23 @@
 }
 
 /* ---------- leadership: the wider team ---------- */
-/* Only rendered once `team` in src/data/site.js has somebody in it. */
+/* Compact cards: a small square frame with the name and role beside it, three
+   to a row on a desktop. The founder keeps the one large portrait. */
 .team{margin-top:clamp(44px,5vw,80px);padding-top:clamp(40px,4.5vw,72px);border-top:1px solid rgba(18,59,93,.1)}
 .team__head{margin-bottom:clamp(28px,3vw,44px)}
-.team__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(20px,2.4vw,32px)}
+.team__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.8vw,22px)}
+@media (max-width:900px){.team__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.team__grid{grid-template-columns:1fr}}
 .person{text-align:left}
+.team__grid .person{
+  display:flex;align-items:center;gap:1rem;
+  padding:.85rem;background:#fff;border:1px solid rgba(18,59,93,.1);border-radius:var(--radius);
+}
+.person__frame.person__frame--sm{flex:0 0 auto;width:72px;aspect-ratio:1;margin:0}
+.person__frame--sm .person__initials{font-size:1.2rem;color:rgba(255,255,255,.55)}
+.person__text{min-width:0}
+.team__grid .person h3{font-size:1rem;line-height:1.25}
+.team__grid .person__role{margin-bottom:0}
 .person__frame{
   position:relative;aspect-ratio:4/5;margin-bottom:1rem;overflow:hidden;
   border-radius:var(--radius);background:var(--navy);
