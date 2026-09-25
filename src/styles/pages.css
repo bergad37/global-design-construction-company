@@ -167,8 +167,13 @@
    `isolation:isolate` is load-bearing. It gives .aboutpage its own stacking
    context so the two negative-z-index sheets stay behind this page's content
    but still paint above the body texture. Drop it and the veil goes behind
-   the texture instead of over it. */
-.aboutpage{position:relative;isolation:isolate}
+   the texture instead of over it.
+
+   `clip-path` is load-bearing too. The sheets are fixed, so they fill the
+   viewport, and a positioned stacking context paints above later in-flow
+   siblings — without the clip the wash sat over the footer and blanked it.
+   Clipping to the page's own box keeps the wash behind this page only. */
+.aboutpage{position:relative;isolation:isolate;clip-path:inset(0)}
 .aboutpage::before,
 .aboutpage::after{content:"";position:fixed;inset:0;pointer-events:none}
 .aboutpage::before{
