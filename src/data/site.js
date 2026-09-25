@@ -14,8 +14,8 @@ export const site = {
     'Architecture, engineering, construction and project management — one accountable team, from first sketch to final handover.',
   contact: {
     address: 'Kigali, Rwanda — add full street address',
-    phone: '+250 788 583 246',
-    phoneHref: 'tel:+250788583246',
+    phone: '+250 788 304 018',
+    phoneHref: 'tel:+250788304018',
     email: 'kdjados0@gmail.com',
     hours: 'Mon – Sat, 08:00 – 18:00',
   },
