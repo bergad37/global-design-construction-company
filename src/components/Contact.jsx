@@ -39,6 +39,8 @@ export default function Contact() {
   const [values, setValues] = useState(EMPTY)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [failed, setFailed] = useState(false)
 
   const set = (field) => (e) => {
     const value = e.target.value
@@ -50,7 +52,7 @@ export default function Contact() {
   const blur = (field) => () =>
     setErrors((prev) => ({ ...prev, [field]: validate(field, values[field]) }))
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     const next = {}
     Object.keys(EMPTY).forEach((field) => { next[field] = validate(field, values[field]) })
@@ -62,9 +64,23 @@ export default function Contact() {
       return
     }
 
-    // No backend yet — see README for wiring this to a form endpoint.
-    setSent(true)
-    setValues(EMPTY)
+    // Netlify Forms picks this up via the hidden "contact" form in index.html.
+    setSending(true)
+    setFailed(false)
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ 'form-name': 'contact', ...values }).toString(),
+      })
+      if (!res.ok) throw new Error(`Form submit failed: ${res.status}`)
+      setSent(true)
+      setValues(EMPTY)
+    } catch {
+      setFailed(true)
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -95,7 +111,11 @@ export default function Contact() {
           <LocationMap />
         </Reveal>
 
-        <Reveal as="form" variant="right" className="form" onSubmit={onSubmit} noValidate>
+        <Reveal
+          as="form" variant="right" className="form" onSubmit={onSubmit} noValidate
+          name="contact" data-netlify="true" netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
           <div className="form__row">
             <Field id="name" label="Full name" error={errors.name}>
               <input
@@ -140,15 +160,16 @@ export default function Contact() {
             />
           </Field>
 
-          <button className="btn btn--primary" type="submit">
-            Send enquiry
+          <button className="btn btn--primary" type="submit" disabled={sending}>
+            {sending ? 'Sending…' : 'Send enquiry'}
             <Icon name="arrowUpRight" strokeWidth={2.4} />
           </button>
 
           <p className="form__note">We reply to every enquiry within one working day.</p>
 
-          <div className={`form__ok ${sent ? 'is-on' : ''}`} role="status">
-            {sent && 'Thank you — your enquiry has been captured. Connect a form endpoint to start receiving it by email.'}
+          <div className={`form__ok ${sent || failed ? 'is-on' : ''}`} role="status">
+            {sent && 'Thank you — your enquiry has been sent. We will be in touch shortly.'}
+            {failed && `Sorry, something went wrong. Please try again or email us at ${site.contact.email}.`}
           </div>
         </Reveal>
 

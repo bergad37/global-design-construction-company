@@ -128,10 +128,15 @@ its images at the matching paths.
 
 ## The contact form
 
-`Contact.jsx` validates in the browser and then shows a confirmation. **There is
-no backend** — nothing is sent anywhere yet. To start receiving enquiries, post
-the form values in `onSubmit` to a form endpoint (Formspree, Basin, a Netlify
-function, or your own API) before the `setSent(true)` call.
+`Contact.jsx` validates in the browser, then posts the enquiry to **Netlify
+Forms**. Because React renders the form, a hidden static copy named `contact`
+lives in `index.html` so Netlify detects it at deploy time — if you add or rename
+a field, update both places.
+
+Submissions appear in the Netlify dashboard under **Forms → contact**. Email
+alerts are configured there too: **Site configuration → Notifications → Emails
+and webhooks → Form submission notifications**. The form only works on the
+deployed site, not on `npm run dev`.
 
 ## Brand
 
